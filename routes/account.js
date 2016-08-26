@@ -92,22 +92,41 @@ router.post('/:resource', function(req, res, next){
 			}
 			req.session.user = profile.id
 			// res.send(createResult(profile.summary()));
-			var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
-			var email = new sendgrid.Email({
-				to:       profile.email,
-				from:     'jag28020@gmail.com',
-				fromname: '31.6 Beauty',
-				subject:  'Welcome to 31.6 Beauty',
-				text:     'This is the welcome message for ' + profile.firstName +' !'
+			var helper = require('sendgrid').mail;
+			var from_email = new helper.Email('jag28020@gmail.com');
+			var to_email = new helper.Email(profile.email);
+			var subject = 'Test 31.6 Beauty';
+			var content = new helper.Content('text/plain', 'Hello, welcome!!');
+			var mail = new helper.Mail(from_email, subject, to_email, content);
+
+			var sg = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			var request = sg.emptyRequest({
+			  method: 'POST',
+			  path: '/v3/mail/send',
+			  body: mail.toJSON(),
 			});
-			sendgrid.send(email, function (err, json){
-				if (err){
-					res.send(createError(JSON.stringify(err)));
-					return;
-				}
-				res.send(createResult(profile.summary()));
-				return;
+
+			sg.API(request, function(error, response) {
+			  // console.log(response.statusCode);
+			  // console.log(response.body);
+			  // console.log(response.headers);
+			  res.send(createResult(profile.summary()));
 			});
+			// var email = new sendgrid.Email({
+			// 	to:       profile.email,
+			// 	from:     'jag28020@gmail.com',
+			// 	fromname: '31.6 Beauty',
+			// 	subject:  'Welcome to 31.6 Beauty',
+			// 	text:     'This is the welcome message for ' + profile.firstName +' !'
+			// });
+			// sendgrid.send(email, function (err, json){
+			// 	if (err){
+			// 		res.send(createError(JSON.stringify(err)));
+			// 		return;
+			// 	}
+			// 	res.send(createResult(profile.summary()));
+			// 	return;
+			// });
 			return;
 		});
 		return;
