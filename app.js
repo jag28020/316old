@@ -19,7 +19,7 @@ mongoose.connect(uristring, function (err, res) {
 
 var routes = require('./routes/index');
 // var api = require('./routes/api');
-// var account = require('./routes/account');
+var account = require('./routes/account');
 // var stripe = require('./routes/stripe');
 
 var app = express();
@@ -46,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 // app.use('/api', api);
-// app.use('/account', account);
+app.use('/account', account);
 // app.use('/stripe', stripe);
 
 

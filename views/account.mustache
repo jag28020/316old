@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{>head}}
+        {{>scripts}}
+    </head>
+    <body ng-app='316Beauty' ng-controller='AccountController' ng-init='init()' class="scroll-assist">
+        {{>nav}}
+        <div class="main-container">
+           
+            <section>
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                    <div class="feature boxed bg-secondary">
+                        <form class="text-center form-email">
+                            <h4 class="uppercase mt48 mt-xs-0">Customize Your Profile</h4>
+                            <p class="lead mb64 mb-xs-24">
+                                Tell us a bit more about yourself so we
+                                <br /> can tailor our recommendations for you.
+                            </p>
+                            <div class="overflow-hidden">
+                                <hr>
+                                <h6 class="uppercase">
+                                    1. What are your interests?
+                                </h6>
+                                <div class="col-sm-4">
+                                    <p class="mb16">
+                                        Clothes
+                                    </p>
+                                    <div class="checkbox-option text-left">
+                                        <div class="inner"></div>
+                                        <input type="checkbox" name="webdesign" value="webdesign" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="mb16">
+                                        Makeup
+                                    </p>
+                                    <div class="checkbox-option text-left">
+                                        <div class="inner"></div>
+                                        <input type="checkbox" name="branding" value="branding" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p class="mb16">
+                                        Hair
+                                    </p>
+                                    <div class="checkbox-option text-left">
+                                        <div class="inner"></div>
+                                        <input type="checkbox" name="print" value="print" />
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    2. How much do you spend on makeup per month?
+                                </h6>
+                                <div class="col-sm-4">
+                                    <p>
+                                        < $20</p>
+                                            <div class="radio-option">
+                                                <div class="inner"></div>
+                                                <input type="radio" name="budget" value="under4k" />
+                                            </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p>$20 - $100</p>
+                                    <div class="radio-option">
+                                        <div class="inner"></div>
+                                        <input type="radio" name="budget" value="4kup" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <p>$100+</p>
+                                    <div class="radio-option">
+                                        <div class="inner"></div>
+                                        <input type="radio" name="budget" value="10kup" />
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    3. Your personal details
+                                </h6>
+                                <div class="row">
+                                    <input type="text" name="name" class="col-md-6" placeholder="Full Name" />
+                                    <input type="text" name="email" class="col-md-6" placeholder="Email" />
+                                </div>
+                                <div>
+                                    <input type="text" name="name" class="col-md-6" placeholder="Password" />
+                                    <input type="date" name="name" class="col-md-6"/>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="overflow-hidden">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <h6 class="uppercase">
+                                        4. Lastly, how did you hear of us?
+                                    </h6>
+                                    <div class="select-option">
+                                        <i class="ti-angle-down"></i>
+                                        <select name="referrer">
+                                            <option selected value="Default">Select An Option</option>
+                                            <option value="google">Google</option>
+                                            <option value="website">Our Website</option>
+                                            <option value="friend">A Friend</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit">Submit Planner</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+            {{>footer}}
+
+        </div>
+    </body>
+</html>
