@@ -111,6 +111,7 @@ router.post('/:resource', function(req, res, next){
 			  console.log(response.body);
 			  console.log(response.headers);
 			  res.send(createResult(profile.summary()));
+			  return;
 			});
 			// var email = new sendgrid.Email({
 			// 	to:       profile.email,
