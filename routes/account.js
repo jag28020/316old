@@ -99,7 +99,7 @@ router.post('/:resource', function(req, res, next){
 			var content = new helper.Content('text/plain', 'Hello, welcome!!');
 			var mail = new helper.Mail(from_email, subject, to_email, content);
 
-			var sg = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+			var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
 			var request = sg.emptyRequest({
 			  method: 'POST',
 			  path: '/v3/mail/send',
@@ -107,9 +107,9 @@ router.post('/:resource', function(req, res, next){
 			});
 
 			sg.API(request, function(error, response) {
-			  // console.log(response.statusCode);
-			  // console.log(response.body);
-			  // console.log(response.headers);
+			  console.log(response.statusCode);
+			  console.log(response.body);
+			  console.log(response.headers);
 			  res.send(createResult(profile.summary()));
 			});
 			// var email = new sendgrid.Email({
