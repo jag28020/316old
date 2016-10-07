@@ -1,5 +1,4 @@
 var Profile = require('../models/Profile');
-var bcrypt = require('bcrypt');
 
 module.exports = {
 

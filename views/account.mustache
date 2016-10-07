@@ -56,12 +56,11 @@
                                     2. How much do you spend on makeup per month?
                                 </h6>
                                 <div class="col-sm-4">
-                                    <p>
-                                        < $20</p>
-                                            <div class="radio-option">
-                                                <div class="inner"></div>
-                                                <input type="radio" name="budget" value="under4k" />
-                                            </div>
+                                    <p>< $20</p>
+                                    <div class="radio-option">
+                                        <div class="inner"></div>
+                                        <input type="radio" name="budget" value="under4k" />
+                                    </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <p>$20 - $100</p>
@@ -84,11 +83,11 @@
                                     3. Your personal details
                                 </h6>
                                 <div class="row">
-                                    <input type="text" name="name" class="col-md-6" placeholder="Full Name" />
-                                    <input type="text" name="email" class="col-md-6" placeholder="Email" />
+                                    <input ng-model="profile.firstName" type="text" name="name" class="col-md-6" placeholder=" Full Name" />
+                                    <input ng-model="profile.email" type="text" name="email" class="col-md-6" placeholder="Email" />
                                 </div>
                                 <div>
-                                    <input type="text" name="name" class="col-md-6" placeholder="Password" />
+                                    <input ng-model="profile.password" type="text" name="name" class="col-md-6" placeholder="Password" />
                                     <input type="date" name="name" class="col-md-6"/>
                                 </div>
                                 <hr>
@@ -96,7 +95,7 @@
                             <div class="overflow-hidden">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <h6 class="uppercase">
-                                        4. Lastly, how did you hear of us?
+                                        4. How did you hear of us?
                                     </h6>
                                     <div class="select-option">
                                         <i class="ti-angle-down"></i>
@@ -108,9 +107,29 @@
                                             <option value="other">Other</option>
                                         </select>
                                     </div>
-                                    <button type="submit">Submit Planner</button>
                                 </div>
+                                <hr/>
                             </div>
+
+                            <div class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    5. Click to add tags to your profile!
+                                </h6>
+                                <a class="btn btn-sm btn-rounded">Macy's</a>
+                                <a class="btn btn-sm btn-rounded">Bumble &amp; Bumble</a>
+                                <a class="btn btn-sm btn-rounded">Michael Kors</a>
+                                <a class="btn btn-sm btn-rounded">Gucci</a>
+                                <a class="btn btn-sm btn-rounded">Prada</a>
+                                <a class="btn btn-sm btn-rounded">Dolce &amp; Gabana</a>
+                                <a class="btn btn-sm btn-rounded">Kohls</a>
+                                <a class="btn btn-sm btn-rounded">TJ Maxx</a>
+                                <hr/>
+                            </div>
+
+                            <div class="overflow-hidden">
+                                <a ng-click="updateProfile()" class="btn btn-lg btn-filled">Update Profile</a>
+                            </div>
+
                         </form>
                     </div>
                 </div>

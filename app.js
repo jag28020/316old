@@ -5,8 +5,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var sessions = require('client-sessions');
+// var sessions = require('client-sessions');
 var compression = require('compression');
+var passport = require('passport');
+require('./config/passport')(passport);
+var session = require('express-session');
 
 var mongoose = require('mongoose');
 var uristring = process.env.MONGODB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/'+appName;
@@ -18,9 +21,8 @@ mongoose.connect(uristring, function (err, res) {
 });
 
 var routes = require('./routes/index');
-// var api = require('./routes/api');
-var account = require('./routes/account');
-// var stripe = require('./routes/stripe');
+var api = require('./routes/api');
+// var account = require('./routes/account')(passport);
 
 var app = express();
 
@@ -36,18 +38,26 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sessions({
-  cookieName: 'session',
-  secret: 'ThiSisaSeCRet!@#',
-  duration: 24*60*60*1000,
-  activeDuration:30*60*1000,
-}));
+// required for passport
+app.use(session({ 
+  secret: 'himynameisjake',
+  resave: false,
+  saveUninitialized: false
+
+})); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+// app.use(sessions({
+//   cookieName: 'session',
+//   secret: 'ThiSisaSeCRet!@#',
+//   duration: 24*60*60*1000,
+//   activeDuration:30*60*1000,
+// }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// app.use('/api', api);
-app.use('/account', account);
-// app.use('/stripe', stripe);
+app.use('/api', api);
+// app.use('/account', account);
 
 
 // catch 404 and forward to error handler

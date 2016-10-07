@@ -19,134 +19,122 @@ function createResult(data){
 	return result;
 }
 
-router.get('/:resource', function(req, res, next){
-	var resource = req.params.resource;
+module.exports = function(passport){
 
-	if (resource == 'logout'){
-		req.session.reset();
-		res.redirect('/');
-	}
+	router.get('/:resource', function(req, res, next){
+		var resource = req.params.resource;
 
-	if (resource == 'currentuser'){
-		if (!req.session || req.session.user == null){
-			res.send(createError('User Not Logged In.'));
-			return;
+		if (resource == 'logout'){
+			req.session.reset();
+			res.redirect('/');
 		}
 
-		Profile.findById(req.session.user, function(err, profile){
-			if (err){
-				res.send(createError(err.message));
+		if (resource == 'currentuser'){
+			if (!req.session || req.session.user == null){
+				res.send(createError('User Not Logged In.'));
 				return;
 			}
 
-			if (profile==null){
-				res.send(createError('Weird MongoDB error srry my bad'));
+			Profile.findById(req.session.user, function(err, profile){
+				if (err){
+					res.send(createError(err.message));
+					return;
+				}
+
+				if (profile==null){
+					res.send(createError('Weird MongoDB error srry my bad'));
+					return;
+				}
+
+				res.send(createResult(profile.summary()));
 				return;
-			}
-
-			res.send(createResult(profile.summary()));
-			return;
-		});		
-		return;
-	}
-	res.send(createError('Invalid resource.'));
-	return;
-});
-
-router.post('/:resource', function(req, res, next){
-	var resource = req.params.resource;
-	var pkg = req.body
-
-	if (resource == 'login'){
-		Profile.findOne({email: pkg.email}, function(err, profile){
-			if (err){
-				res.send(createError(err.message));
-				return;
-			}
-
-			if (profile == null){
-				res.send(createError('Profile with specified email not found'));
-				return;
-			}
-
-			var passwordCorrect = bcrypt.compareSync(pkg.password, profile.password);
-
-			if (!passwordCorrect){
-				res.send(createError('Invalid password'));
-				return;
-			}
-			req.session.user = profile.id
-			res.send(createResult(profile.summary()));
-			return;
-		});
-		return;
-	}
-
-	if (resource == 'register'){
-		var hashedPassword = bcrypt.hashSync(pkg['password'], 10);
-		pkg['password'] = hashedPassword;
-		Profile.create(pkg, function(err, profile){
-			if (err){
-				res.send(createError(err.message));
-				return;
-			}
-			req.session.user = profile.id
-			// res.send(createResult(profile.summary()));
-			var helper = require('sendgrid').mail;
-			var from_email = new helper.Email('jag28020@gmail.com');
-			var to_email = new helper.Email(profile.email);
-			var subject = 'Test 31.6 Beauty';
-			var content = new helper.Content('text/plain', 'Hello, welcome!!');
-			var mail = new helper.Mail(from_email, subject, to_email, content);
-
-			var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
-			var request = sg.emptyRequest({
-			  method: 'POST',
-			  path: '/v3/mail/send',
-			  body: mail.toJSON(),
-			});
-
-			sg.API(request, function(error, response) {
-			  console.log(response.statusCode);
-			  console.log(response.body);
-			  console.log(response.headers);
-			  res.send(createResult(profile.summary()));
-			  return;
-			});
-			// var email = new sendgrid.Email({
-			// 	to:       profile.email,
-			// 	from:     'jag28020@gmail.com',
-			// 	fromname: '31.6 Beauty',
-			// 	subject:  'Welcome to 31.6 Beauty',
-			// 	text:     'This is the welcome message for ' + profile.firstName +' !'
-			// });
-			// sendgrid.send(email, function (err, json){
-			// 	if (err){
-			// 		res.send(createError(JSON.stringify(err)));
-			// 		return;
-			// 	}
-			// 	res.send(createResult(profile.summary()));
-			// 	return;
-			// });
-			return;
-		});
-		return;
-	}
-
-	res.send(createError('Invalid resource.'));
-	return;
-});
-
-router.put('/:id', function (req, res, next){
-	Profile.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, profile){
-		if (err){
-			res.send(createError(err.message));
+			});		
 			return;
 		}
-		res.send(createResult(profile.summary()));
+		res.send(createError('Invalid resource.'));
 		return;
 	});
-	return;
-});
 
-module.exports = router;
+	router.post('/:resource', function(req, res, next){
+		var resource = req.params.resource;
+		var pkg = req.body
+
+		if (resource == 'login'){
+			Profile.findOne({email: pkg.email}, function(err, profile){
+				if (err){
+					res.send(createError(err.message));
+					return;
+				}
+
+				if (profile == null){
+					res.send(createError('Profile with specified email not found'));
+					return;
+				}
+
+				var passwordCorrect = bcrypt.compareSync(pkg.password, profile.password);
+
+				if (!passwordCorrect){
+					res.send(createError('Invalid password'));
+					return;
+				}
+				req.session.user = profile.id
+				res.send(createResult(profile.summary()));
+				return;
+			});
+			return;
+		}
+
+		if (resource == 'register'){
+			var hashedPassword = bcrypt.hashSync(pkg['password'], 10);
+			pkg['password'] = hashedPassword;
+			Profile.create(pkg, function(err, profile){
+				if (err){
+					res.send(createError(err.message));
+					return;
+				}
+				req.session.user = profile.id
+
+				var helper = require('sendgrid').mail;
+				var from_email = new helper.Email('jag28020@gmail.com');
+				var to_email = new helper.Email(profile.email);
+				var subject = 'Test 31.6 Beauty';
+				var content = new helper.Content('text/plain', 'Hello, welcome!!');
+				var mail = new helper.Mail(from_email, subject, to_email, content);
+
+				var sg = require('sendgrid')(process.env.SENDGRID_API_KEY);
+				var request = sg.emptyRequest({
+				  method: 'POST',
+				  path: '/v3/mail/send',
+				  body: mail.toJSON(),
+				});
+
+				sg.API(request, function(error, response) {
+				  console.log(response.statusCode);
+				  console.log(response.body);
+				  console.log(response.headers);
+				  res.send(createResult(profile.summary()));
+				  return;
+				});
+				
+				return;
+			});
+			return;
+		}
+
+		res.send(createError('Invalid resource.'));
+		return;
+	});
+
+	router.put('/:id', function (req, res, next){
+		Profile.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, profile){
+			if (err){
+				res.send(createError(err.message));
+				return;
+			}
+			res.send(createResult(profile.summary()));
+			return;
+		});
+		return;
+	});
+
+}

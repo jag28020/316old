@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+    <head>
+       {{>head}}
+    </head>
+    <body ng-app="316Beauty" ng-controller="ComingSoonController" ng-init="init()" class="scroll-assist">
+        <div class="main-container">
+            <section class="cover fullscreen image-bg overlay">
+                <div class="background-image-holder">
+                    <img alt="image" class="background-image" src="img/page-coming-soon.jpg" />
+                </div>
+                <div class="container v-align-transform">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="countdown mb40" data-date="2017/05/23"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                            <div class="feature bordered text-center">
+                                <h3 class="uppercase">Check Back Soon</h3>
+                                <p>
+                                    We'll be launching our new site - 31.6 Beauty - in the coming weeks. Hit the form below to get notified as we launch. Thanks for your interest!
+                                </p>
+                                <form class="halves form-newsletter">
+                                    <input class="mb16" type="text" placeholder="Email Address" name="email" />
+                                    <button class="mb16" type="submit">Notify Me</button>
+                                    <span>*We won't share your email with third parties.</span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            {{>footer}}
+        </div>
+        {{>scripts}}
+    </body>
+</html>

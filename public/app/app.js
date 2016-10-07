@@ -1,7 +1,9 @@
 var modules = [
 	'HomeModule',
 	'LoginModule',
-	'AccountModule'
+	'AccountModule',
+	'ProfileModule',
+	'ComingSoonModule'
 ];
 
 var app = angular.module('316Beauty', modules, function($interpolateProvider){
