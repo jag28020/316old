@@ -1,68 +1,65 @@
-var appName = '316beauty';
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-// var sessions = require('client-sessions');
-var compression = require('compression');
-var passport = require('passport');
-require('./config/passport')(passport);
-var session = require('express-session');
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    cookieParser = require('cookie-parser'),
+    bodyParser = require('body-parser'),
+    compression = require('compression'),
+    passport = require('passport'),
+    session = require('express-session'),
+    mongoose = require('mongoose'),
+    passportConfig = require('./config/passport'),
+    dbConfig = require('./config/db')
 
-var mongoose = require('mongoose');
-var uristring = process.env.MONGODB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/'+appName;
-mongoose.connect(uristring, function (err, res) {
+
+
+mongoose.Promise = global.Promise
+mongoose.connect(dbConfig.url, function (err, res) {
   if (err)
-    console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    console.log ('ERROR connecting to: ' + dbConfig.url + '. ' + err)
   else 
-    console.log ('Succeeded connected to: ' + uristring);
+    console.log ('Succeeded connected to: ' + dbConfig.url)
 });
 
-var routes = require('./routes/index');
-var api = require('./routes/api');
-// var account = require('./routes/account')(passport);
-
-var app = express();
+var app = express()
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'mustache');
-app.engine('mustache', require('hogan-middleware').__express);
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'mustache')
+app.engine('mustache', require('hogan-middleware').__express)
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(compression());
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-// required for passport
+app.use(compression())
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(cookieParser())
+
 app.use(session({ 
-  secret: 'himynameisjake',
-  resave: false,
-  saveUninitialized: false
+  secret: 'ijsdfijsdf316Beautypijsvpi',
+  resave: true,
+  saveUninitialized: false,
+  expires: new Date(Date.now() + (30 * 86400 * 1000)) //1 month in milliseconds
+}))
+app.use(passport.initialize())
+app.use(passport.session()) // persistent login sessions
 
-})); // session secret
-app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-// app.use(sessions({
-//   cookieName: 'session',
-//   secret: 'ThiSisaSeCRet!@#',
-//   duration: 24*60*60*1000,
-//   activeDuration:30*60*1000,
-// }));
-app.use(express.static(path.join(__dirname, 'public')));
+//Configure passport
+passportConfig(passport)
 
-app.use('/', routes);
-app.use('/api', api);
-// app.use('/account', account);
+app.use(express.static(path.join(__dirname, 'public')))
 
+//Connect routes
+var index = require('./routes/index')(passport)
+var api = require('./routes/api')(passport)
+
+app.use('/', index)
+app.use('/api', api)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  var err = new Error('Not Found')
   err.status = 404;
   next(err);
 });
@@ -77,14 +74,14 @@ if (app.get('env') === 'development') {
     res.render('error', {
       message: err.message,
       error: err
-    });
-  });
+    })
+  })
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
+  res.status(err.status || 500)
   res.render('error', {
     message: err.message,
     error: {}
@@ -92,4 +89,4 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+module.exports = app

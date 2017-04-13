@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+       {{>head}}
+       {{>scripts}}
+    </head>
+    <body ng-app="316Beauty" ng-controller="JoinController" ng-init="init()" class="scroll-assist">
+        {{>nav}}
+        <div class="main-container">
+            <section class="cover fullscreen image-bg overlay">
+                <div class="background-image-holder">
+                    <img alt="image" class="background-image" src="img/home12.jpg" />
+                </div>
+                <div class="container v-align-transform">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                            <div class="feature bordered text-center">
+                                <i class="icon fa fa-lock"></i><h4 class="uppercase">Login or Signup </h4>
+                                <a class="btn btn-lg btn-filled mb0" href="/login"><i class="icon-xs fa fa-user"></i> Login</a>
+                                <a class="btn btn-lg btn-filled mb0" href="/signup" class="btn btn-default"><i class="icon-xs fa fa-user"></i> Signup</a>
+                                <a class="btn btn-lg btn-filled mb0" href="/auth/facebook" class="btn btn-primary"><i class="icon-xs fa fa-facebook"></i> Facebook</a>
+                                <a class="btn btn-lg btn-filled mb0" href="/auth/instagram" class="btn btn-info"><i class="icon-xs fa fa-instagram"></i> Instagram</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            {{>footer}}
+        </div>
+    </body>
+</html>

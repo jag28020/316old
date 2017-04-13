@@ -2,7 +2,7 @@ var homeCtr = angular.module('HomeModule', []);
 
 homeCtr.controller('HomeController', ['$scope', '$http', function($scope, $http){
 	
-	$scope.profile = {email:'', password:''}
+	$scope.profile = null;
 	$scope.currentUser = null;
 	$scope.showLogin = false;
 
@@ -19,7 +19,7 @@ homeCtr.controller('HomeController', ['$scope', '$http', function($scope, $http)
 		console.log('login: ' + JSON.stringify($scope.profile))
 		$http({
 			method:'POST',
-			url: '/account/login',
+			url: '/login',
 			data: $scope.profile
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
@@ -37,7 +37,7 @@ homeCtr.controller('HomeController', ['$scope', '$http', function($scope, $http)
 	function getCurrentUser(){
 		$http({
 			method:'GET',
-			url: '/account/currentuser'
+			url: '/currentuser'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			if (response.data.confirmation == 'success'){
@@ -71,7 +71,7 @@ homeCtr.controller('HomeController', ['$scope', '$http', function($scope, $http)
 			console.log('validate successful')
 			$http({
 				method:'POST',
-				url: '/account/register',
+				url: '/signup',
 				data: $scope.profile
 			}).then(function success(response){
 				console.log(JSON.stringify(response.data));
@@ -86,7 +86,7 @@ homeCtr.controller('HomeController', ['$scope', '$http', function($scope, $http)
 		console.log("logout : " + JSON.stringify($scope.profile))
 		$http({
 		method:'GET',
-			url: '/account/logout'
+			url: '/logout'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			$scope.currentUser = null

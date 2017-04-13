@@ -256,20 +256,20 @@ $(document).ready(function() {
 
     // Instagram Feed
     
-    if($('.instafeed').length){
-    	jQuery.fn.spectragram.accessData = {
-			accessToken: '302619183.4e36d4b.a0b5ea439eba470ebc2a8b9b95debd3e',
-			clientID: '4e36d4b85e4b46acb846df1341d238c9'
-		};	
+  //   if($('.instafeed').length){
+  //   	jQuery.fn.spectragram.accessData = {
+		// 	accessToken: '302619183.4e36d4b.a0b5ea439eba470ebc2a8b9b95debd3e',
+		// 	clientID: '4e36d4b85e4b46acb846df1341d238c9'
+		// };	
 
-        $('.instafeed').each(function() {
-            var feedID = $(this).attr('data-user-name');
-            $(this).children('ul').spectragram('getUserFeed', {
-                query: feedID,
-                max: 12
-            });
-        });
-    }   
+  //       $('.instafeed').each(function() {
+  //           var feedID = $(this).attr('data-user-name');
+  //           $(this).children('ul').spectragram('getUserFeed', {
+  //               query: feedID,
+  //               max: 12
+  //           });
+  //       });
+  //   }   
 
    
 

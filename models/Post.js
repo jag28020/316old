@@ -9,6 +9,9 @@ var PostSchema = new mongoose.Schema({
 
 PostSchema.methods.summary = function(){
   var summary = {
+  	'title': this.title,
+  	'body': this.body,
+  	'author': this.author,
     'timestamp': this.timestamp,
     'id':this._id,
   };

@@ -1,100 +1,148 @@
-var express = require('express');
-var ProfileController = require('../controllers/ProfileController');
-var router = express.Router();
-var controllers = {
-	profile: ProfileController,
+var express = require('express'),
+	router = express.Router(),
+	ProfileController = require('../controllers/ProfileController'),
+	PostController = require('../controllers/PostController'),
+	CommentController = require('../controllers/CommentController'),
+	ProductController = require('../controllers/ProductController'),
+	controllers = {
+		profile: ProfileController, 
+		post: PostController,
+		comment: CommentController,
+		product: ProductController
+	}
+
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next()
+    res.json(createError('Not logged in'))
 }
 
 function createError(msg){
 	var error = {
-		confirmation:'fail',
-		message:msg
+		confirmation : 'fail',
+		message : msg
 	};
-	return error;
+	return error
 }
 
 function createResult(data){
 	var result = {
-		confirmation:'success',
-		results:data
+		confirmation : 'success',
+		result : data
 	}; 
-	return result;
+	return result
 }
 
-router.post('/:resource', function(req, res, next){
-	var resource = req.params.resource;
-	var controller = controllers[resource];
-	if (controller==null){
-		res.send(createError('Invalid resource'));
-		return;
-	}
+module.exports = function(passport){
 
-	controller.post(req.body, function(err, results){
-		if (err){
-			res.send(createError(err));
+
+	router.post('/:resource', isLoggedIn, function(req, res, next){
+		var resource = req.params.resource;
+		var controller = controllers[resource];
+		if (controller==null){
+			res.json(createError('Invalid resource'));
 			return;
 		}
-		res.send(createResult(results));
-		return;
-	})
-	return;
-});
 
-router.get('/:resource', function(req, res, next){
-	var resource = req.params.resource;
-	var controller = controllers[resource];
-
-	if (controller == null){
-		res.send(createError('Invalid resource'));
-		return;
-	}
-	controller.get(req.query, function(err, results){
-		if (err){
-			res.send(createError(err));
+		controller.post(req.body, function(err, results){
+			if (err){
+				res.json(createError(err));
+				return;
+			}
+			res.json(createResult(results));
 			return;
-		}
-		res.send(createResult(results));
+		})
 		return;
 	});
-	return;
-});
 
-router.get('/:resource/:id', function(req, res, next){
-	var resource = req.params.resource;
-	var id = req.params.id;
-	var controller = controllers[resource];
-	if (controller == null){
-		res.send(createError('Invalid resource'));
-		return;
-	}
-	controller.getById(id, function(err, results){
-		if (err){
-			res.send(createError(err));
+	router.get('/:resource', function(req, res, next){
+		var resource = req.params.resource;
+		var controller = controllers[resource];
+
+		if (controller == null){
+			res.json(createError('Invalid resource'));
 			return;
 		}
-		res.send(createResult(results));
+		controller.get(req.query, function(err, results){
+			if (err){
+				res.json(createError(err));
+				return;
+			}
+			res.json(createResult(results));
+			return;
+		});
 		return;
 	});
-	return;
-});
 
-router.put('/:resource', function (req, res, next){
-	var resource = req.params.resource;
-	var controller = controllers[resource];
-	if (controller==null){
-		res.send(createError('Invalid resource'));
-		return;
-	}
-
-	controller.update(req.body, function(err, results){
-		if (err){
-			res.send(createError(err));
+	router.get('/:resource/:id', function(req, res, next){
+		var resource = req.params.resource;
+		var id = req.params.id;
+		var controller = controllers[resource];
+		if (controller == null){
+			res.json(createError('Invalid resource'));
 			return;
 		}
-		res.send(createResult(results));
+		controller.getById(id, function(err, results){
+			if (err){
+				res.json(createError(err));
+				return;
+			}
+			res.json(createResult(results));
+			return;
+		});
 		return;
-	})
-	return;
-});
+	});
 
-module.exports = router;
+	router.put('/:resource', isLoggedIn, function (req, res, next){
+		var resource = req.params.resource;
+		var controller = controllers[resource];
+		if (controller==null){
+			res.json(createError('Invalid resource'));
+			return;
+		}
+		if (req.query.pass == 'true'){
+			controller.putWithPass(req.body, function(err, results){
+				if (err){
+					res.json(createError(err));
+					return;
+				}
+				res.json(createResult(results));
+				return;
+			})
+		}
+		else {
+			controller.put(req.body, function(err, results){
+				if (err){
+					res.json(createError(err));
+					return;
+				}
+				res.json(createResult(results));
+				return;
+			})
+		}
+		return;
+	});
+
+	router.delete('/:resource/:id', isLoggedIn, function(req, res, next){
+		var resource = req.params.resource;
+		var id = req.params.id;
+		var controller = controllers[resource];
+		if (controller==null){
+			res.json(createError('Invalid resource'));
+			return;
+		}
+
+		controller.delete(id, function(err, results){
+			if (err){
+				res.json(createError(err));
+				return;
+			}
+			res.json(createResult(results));
+			return;
+		})
+		return;
+	});
+
+	return router
+}

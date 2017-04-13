@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{>head}}
+        {{>scripts}}
+    </head>
+    <body ng-app='316Beauty' ng-controller='BrandController' ng-init='init()' class="scroll-assist">
+        {{>nav}}
+        <div class="main-container">
+           
+            <section>
+                <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+                    <div class="feature boxed bg-secondary">
+                        <form class="text-center form-email">
+
+                            <h4 class="uppercase mt48 mt-xs-0">Brand Dashboard</h4>
+                            <p class="lead mb64 mb-xs-24">
+                                Set your public info, social media accounts &amp; manage products.
+                            </p>
+
+                            <div>
+                                <h6 class="uppercase">
+                                    1. Profile Details
+                                </h6>
+                                <div class="row">
+                                    <input ng-model="currentUser.local.brandName" type="text" class="col-md-6" placeholder=" Brand Name" />
+                                    <input ng-model="currentUser.local.brandEmail" type="text" class="col-md-6" placeholder="Public Email" />
+                                </div>
+                                <div class="row">
+                                    <input ng-model="currentUser.local.password" type="password" class="col-md-6" placeholder="Password" />
+                                    <input ng-model="currentUser.local.brandPhone" type="text" class="col-md-6" placeholder="Public Phone" />
+                                </div>
+
+                                <div class="overflow-hidden">
+                                    <a ng-click="updateProfile()" class="btn btn-lg btn-filled"><span class="fa fa-floppy-o"></span> Update Profile</a>
+                                </div>
+
+                                <hr>
+                            </div>
+
+                            <div class="overflow-hidden">
+                                <div class="col-sm-6 col-sm-offset-3">
+                                    <h6 class="uppercase">
+                                        2. Social media accounts
+                                    </h6>
+                                </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h3 class="text-primary"><span class="fa fa-user"></span> Local</h3>
+                                                <a ng-show="currentUser.local.email"  href="#" class="btn btn-md btn-rounded"><span class="fa fa-chain-broken"></span> Unlink</a>
+                                                <a ng-show="!currentUser.local.email" href="#" class="btn btn-md btn-rounded"><span class="fa fa-link"></span> Connect Local</a>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+                                                <a ng-show="currentUser.facebook.token" href="/unlink/facebook" class="btn btn-md btn-rounded"><span class="fa fa-chain-broken"></span> Unlink</a>
+                                                <a ng-show="!currentUser.facebook.token" href="/connect/facebook" class="btn btn-md btn-rounded"><span class="fa fa-link"></span> Connect Facebook</a>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <h3 class="text-primary"><span class="fa fa-instagram"></span> Instagram</h3>
+                                                <a ng-show="currentUser.instagram.token" href="/unlink/instagram" class="btn btn-md btn-rounded"><span class="fa fa-chain-broken"></span> Unlink</a>
+                                                <a ng-show="!currentUser.instagram.token" href="/connect/instagram" class="btn btn-md btn-rounded"><span class="fa fa-link"></span> Connect Instagram</a>
+                                        </div>
+
+                                    </div>
+                                <hr/>
+                            </div>
+
+                            <div class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    3. Manage Products
+                                </h6>
+                            
+                                <div class="col-md-4" ng-repeat="product in products track by $index">
+                                    <cl-image style="margin-left:auto; margin-right:auto" ng-if="product.image != '' " public-id="<%product.image%>" class="thumbnail inline" format="jpg">
+                                        <cl-transformation height="150" width="150" crop="fill" />
+                                    </cl-image>
+                                    <div id="direct_upload" 
+                                        ngf-drop="uploadFiles($files, $index)"
+                                        ngf-drag-over-class="dragOverClass($event)"
+                                        ng-model="files"
+                                        ng-multiple="true">
+                                        <form>
+                                            <div class="form_line">
+                                                <div class="form_controls">
+                                                    <div>
+                                                        <a class="btn btn-md btn-rounded" ngf-select="uploadFiles($files, $index)" multiple title="upload" resetOnClick="true" ><span class="fa fa-picture-o"></span> Upload Image</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>                                        
+                                    </div>
+                                    <input ng-model="product.name" type="text" placeholder="Name">
+                                    <input ng-model="product.link" type="text" placeholder="Link">
+                                    <input ng-model="product.price" type="text" placeholder="Price (i.e. 12.99)">
+                                    <textarea ng-model="product.description" placeholder="Description"></textarea>
+                                    <a ng-click="editProduct($index)" class="btn btn-lg btn-filled"><span class="fa fa-floppy-o"></span> Save</a><br/>
+                                    <a ng-click="deleteProduct($index)" style="margin-right:8px" class="btn btn-lg btn-filled"><span class="fa fa-trash"></span> Delete</a>
+                                </div>
+
+                                <hr/>
+
+                            <div class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    4. Add Product
+                                </h6>
+                                <div>
+                                    <cl-image style="margin-left:auto; margin-right:auto" ng-if="newProduct.image != '' " public-id="<%newProduct.image%>" class="thumbnail inline" format="jpg">
+                                        <cl-transformation height="300" width="300" crop="fill" />
+                                    </cl-image>
+                                    <div id="direct_upload" 
+                                        ngf-drop="uploadFiles($files, 'newProduct')"
+                                        ngf-drag-over-class="dragOverClass($event)"
+                                        ng-model="files"
+                                        ng-multiple="true">
+                                        <form>
+                                            <div class="form_line">
+                                                <div class="form_controls">
+                                                    <div>
+                                                        <a class="btn btn-md btn-rounded" ngf-select="uploadFiles($files, 'newProduct')" multiple title="upload" resetOnClick="true" ><span class="fa fa-picture-o"></span> Upload Image</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>                                        
+                                    </div>
+                                    <input ng-model="newProduct.name" type="text" placeholder="Name">
+                                    <input ng-model="newProduct.link" type="text" placeholder="Link">
+                                    <input ng-model="newProduct.price" type="text" placeholder="Price (i.e. 12.99)">
+                                    <textarea ng-model="newProduct.description" placeholder="Description"></textarea>
+                                    
+                                    <a ng-click="addProduct()" class="btn btn-lg btn-filled"><span class="fa fa-cloud-upload"></span> Add</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
+            {{>footer}}
+
+        </div>
+    </body>
+</html>
