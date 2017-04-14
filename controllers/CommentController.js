@@ -8,7 +8,7 @@ module.exports = {
 				completion(err, null)
 				return
 			}
-			if (!post){
+			if (!comment){
 				completion('Error', null)
 				return
 			}

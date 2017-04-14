@@ -23,34 +23,27 @@
 
                         <div ng-cloak class="container">
                             <div class="row text-center">
-                                <div ng-show='!showLogin && !currentUser' class="col-md-12">
+                                <div ng-show='!currentUser' class="col-md-12">
                                     <h1 class="mb8">31.6 Beauty</h1>
                                     <p class="lead mb48">
                                         Sign up for exclusive tips, articles and discounts - courtesy of Kelsie Ann.
                                     </p>
-                                    <form class="thirds form-newsletter">
-                                        <input ng-model='profile.email' type="text" name="Email"  placeholder="Email" />
-                                        <input ng-model='profile.password' type="password" name="Password" placeholder="Password" />
-                                        <button ng-click='register()' type="submit">Join the Club</button>
-                                    </form>
-                                    <p class="mb0">Returning user?
-                                    <a ng-click='toggleLogin()' href="#">Click Here To Login</a>
-                                </p>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <input ng-model='profile.email' type="text" name="Email"  placeholder="Email" />
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input ng-model='profile.password' type="password" name="Password" placeholder="Password" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <a ng-click="register()" class="btn btn-lg btn-rounded">Join</a>
+                                        <a ng-click="login()" class="btn btn-lg btn-rounded">Login</a>
+                                        <a href="/auth/facebook" class="btn btn-lg btn-rounded"><span class="fa fa-facebook"></span> Facebook</a>
+                                        <a href="/auth/instagram" class="btn btn-lg btn-rounded"><span class="fa fa-instagram"></span> Instagram</a>
+                                    </div>
                                 </div>
-                                <div ng-show='showLogin  && !currentUser' class="col-md-12">
-                                    <h1 class="mb8">31.6 Beauty</h1>
-                                    <p class="lead mb48">
-                                        Log in for exclusive tips, articles and discounts - courtesy of Kelsie Ann.
-                                    </p>
-                                    <form class="thirds form-newsletter">
-                                        <input ng-model='profile.email' type="text" name="Email"  placeholder="Email" />
-                                        <input ng-model='profile.password' type="password" name="Password" placeholder="Password" />
-                                        <button ng-click='login()' type="submit">Log In</button>
-                                    </form>
-                                    <p class="mb0">New user?
-                                    <a ng-click='toggleLogin()' href="#">Click Here To Register</a>
-                                </p>
-                                </div>
+                                
                                 <div ng-show='currentUser' class="col-md-12">
                                     <h1 class="mb8">31.6 Beauty</h1>
                                     <p class="lead mb48">

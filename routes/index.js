@@ -41,6 +41,18 @@ module.exports = function(passport){
         res.render('brand-profile')
     });
 
+    router.get('/feed', function(req, res) {
+        res.render('blog-simple-feed')
+    });
+
+    router.get('/post', function(req, res) {
+        res.render('blog-single-no-sidebar')
+    });
+
+    router.get('/newpost', function(req, res) {
+        res.render('newpost')
+    });
+
     router.get('/profile', isLoggedIn, function(req, res) {
         res.render('profile2')
     });
@@ -52,7 +64,7 @@ module.exports = function(passport){
 
     router.get('/logout', function(req, res) {
         req.logout()
-        res.json(createResult("Logout successful"))
+        res.redirect('/')
     });
 
     router.post('/login', function(req, res, next){

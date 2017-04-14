@@ -17,6 +17,8 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 			url: '/currentuser'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
+			if (response.data.results.local.isBrand == "true")
+				window.location.href = "/brand-profile"
 			if (response.data.confirmation == 'success'){
 				$scope.currentUser = response.data.results
 				$scope.currentUser.local.password = ""

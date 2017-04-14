@@ -5,7 +5,7 @@
                 <i class="ti-menu"></i>
             </div>
             <div ng-cloak class="module-group text-left">
-                <div ng-show='!isUserLoggedIn()' class="module right">
+                <div ng-show='currentUser.id == null ' class="module right">
                     <ul class="menu">
                         <li>
                             <a href="/">
@@ -13,13 +13,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/join">
-                                Join
+                            <a href="/feed">
+                                Feed
                             </a>
                         </li>
                     </ul>
                 </div>
-                <div ng-show='isUserLoggedIn()' class="module right">
+                <div ng-show='currentUser.id.length > 0 ' class="module right">
                     <ul class="menu">
                         <li>
                             <a href="/">
@@ -27,13 +27,12 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/account">
-                                Account
+                            <a href="/feed">
+                                Feed
                             </a>
-                         
                         </li>
                         <li>
-                            <a ng-click='logout()' href="#">
+                            <a href="/logout">
                                 Logout
                             </a>
                          

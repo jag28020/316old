@@ -7,7 +7,10 @@ var modules = [
 	'ComingSoonModule',
 	'NewBrandModule',
 	'BrandModule',
-	'cloudinary'
+	'cloudinary',
+	'FeedModule',
+	'PostModule',
+	'NewPostModule'
 ];
 
 var app = angular.module('316Beauty', modules, function($interpolateProvider){
