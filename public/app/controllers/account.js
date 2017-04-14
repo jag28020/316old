@@ -53,7 +53,7 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 		console.log(JSON.stringify($scope.currentUser))
 		$http({
 			method:'PUT',
-			url: '/api/profile' + ($scope.currentUser.local.password.length>0 ? "?pass=true" : ""),
+			url: '/api/profile' + (($scope.currentUser.local.password.length >0 || $scope.currentUser.local.password.length != null)? "?pass=true" : ""),
 			data: $scope.currentUser
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
