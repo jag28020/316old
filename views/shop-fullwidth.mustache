@@ -58,14 +58,14 @@
                             <div class="image-tile outer-title text-center">
                                 <a href="https://<%product.link%>" target="_blank">
                                     <span ng-show="$first" class="label">Sale</span>
-                                    <cl-image class="product-thumb" public-id="<%product.image | currency%>" width="180" height="240" radius="max" crop="fill" format="jpg">
+                                    <cl-image class="product-thumb" public-id="<%product.image%>" width="180" height="240" radius="max" crop="fill" format="jpg">
                                     <cl-transformation width="180" height="240" radius="max" crop="fill" />
                                 </cl-image>
                                 </a>
                                 <div class="title">
                                     <h5 class="mb0"><%product.name%>
                                         <br /> <%product.description%></h5>
-                                    <span class="display-block mb16"><% product.price %></span>
+                                    <span class="display-block mb16"><% product.price | currency %></span>
                                 </div>
                             </div>
                         </div>
