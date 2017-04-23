@@ -33,6 +33,10 @@ module.exports = function(passport){
         res.render('home')
     });
 
+    router.get('/lookbook', function(req, res) {
+        res.render('blog-masonry')
+    });
+
     router.get('/brand', function(req, res) {
         res.render('signup')
     });
