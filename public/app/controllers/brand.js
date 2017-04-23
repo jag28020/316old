@@ -94,6 +94,7 @@ brandCtr.controller('BrandController', ['$scope', '$http', 'Upload', 'cloudinary
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			$scope.currentUser = response.data.result
+			$scope.currentUser.local.password = ""
 			$scope.currentUser.local.birthday = new Date(response.data.result.local.birthday)
 		}, function error(response){
 			console.log(JSON.stringify(response.data));
