@@ -18,7 +18,7 @@
                         </div>
                     </div>
                     <div class="row mt8">
-                        <div ng-cloak ng-show="brands" ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1 col-sm-offset-1': $first }" class="col-md-2 col-sm-2 text-center">
+                        <div ng-cloak ng-show="brands" ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1 col-sm-offset-1': $first }" class="col-md-2 col-sm-2 col-cs-2 text-center">
                             <a href="#">
                                 <cl-image ng-cloak style="border-radius:20px;border: 2px solid #222" public-id="<%brand.local.image%>" width="100" height="100" radius="max" crop="fill" format="jpg">
                                     <cl-transformation width="100" height="100" radius="max" crop="fill" />
