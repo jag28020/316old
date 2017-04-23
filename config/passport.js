@@ -88,28 +88,30 @@ module.exports = function(passport) {
         passwordField : 'password',
         passReqToCallback : true 
     }, function(req, email, password, done) {
+        console.log("brand signup")
         Profile.findOne({'local.email': email}, function(err, existingUser) {
             if (err)
                 return done(err)
             if (existingUser) 
                 return done(null, false, {message: 'A profile with that email already exists'})
-            // Logged in, connect local account
-            if(req.user) {
-                var user = req.user
-                user.local.email = email
-                user.local.password = generateHash(password)
-                user.save(function(err) {
-                    if (err)
-                        throw err;
-                    return done(null, user)
-                });
-            } 
+            // Logged in, connect local account. Causing email overrite bug
+            // if(req.user) {
+            //     var user = req.user
+            //     user.local.email = email
+            //     user.local.password = generateHash(password)
+            //     user.save(function(err) {
+            //         if (err)
+            //             throw err;
+            //         return done(null, user)
+            //     });
+            // } 
             // Create new Profile
             else {
                 var newUser = new Profile();
                 newUser.local.email = email
                 newUser.local.password = generateHash(password)
                 newUser.local.isBrand = 'true'
+                newUser.local.isFeatured = 'true' //TURN OFF LATER!!
                 newUser.save(function(err) {
                     if (err)
                         throw err;
