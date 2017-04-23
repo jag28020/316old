@@ -5,7 +5,7 @@
     </head>
     <body ng-app="316Beauty" ng-controller="ProductsController" ng-init="init()" class="scroll-assist">
         {{>nav}}
-        <div class="main-container">
+        <div ng-show="<%products && brands%>" class="main-container">
             <section ng-cloak ng-show="brands" class="page-title page-title-2 image-bg overlay parallax">
                 <div class="background-image-holder">
                     <img alt="Background Image" class="background-image" src="img/wide-1.jpg" />
@@ -33,7 +33,7 @@
                 </div>
                 <!--end of container-->
             </section>
-            <section ng-show="products">
+            <section>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2 col-sm-4 masonry-item col-xs-12">
