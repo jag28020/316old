@@ -28,7 +28,7 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 	function getBrands(){
 		$http({
 			method:'GET',
-			url: '/api/profile?local.isFeatured=true&local.isBrand=true'
+			url: '/api/profile?local.isBrand=true'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			if (response.data.confirmation == 'success'){
@@ -42,7 +42,7 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 	function getProducts(){
 		$http({
 			method:'GET',
-			url: '/api/product?local.isFeatured=true&'
+			url: '/api/product'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			if (response.data.confirmation == 'success'){
