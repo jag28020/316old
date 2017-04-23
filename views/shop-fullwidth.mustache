@@ -20,7 +20,7 @@
                     <div class="row mt8">
                         <div ng-repeat="brand in brands track by $index" ng-class="$index==0 ? col-md-offset-1 : " class="col-md-2 text-center">
                             <a href="#">
-                                <cl-image style="border-radius:16px;" public-id="brand.local.image" width="120" height="120" radius="max" crop="fill" format="jpg">
+                                <cl-image style="border-radius:16px;" public-id="<%brand.local.image%>" width="120" height="120" radius="max" crop="fill" format="jpg">
                                     <cl-transformation width="120" height="120" radius="max" crop="fill" />
                                 </cl-image>
                             </a>
