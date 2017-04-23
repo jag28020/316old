@@ -25,7 +25,9 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 				$scope.currentUser.local.birthday = new Date(response.data.results.local.birthday)
 				$scope.currentUser.local.tags.forEach(function (t){
 					console.log("Preselect tag " + t)
-					document.getElementById(t).className += " btn-selected"
+					var btn = document.getElementById(t)
+					if (btn)
+						document.getElementById(t).className += " btn-selected"
 				})
 			}
 		}, function error(response){
@@ -46,6 +48,7 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 			event.currentTarget.className += " btn-selected"
 			$scope.currentUser.local.tags.push(tag)
 		}
+		$scope.updateProfile()
 		console.log(JSON.stringify($scope.currentUser))
 	}
 
@@ -53,12 +56,13 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 		console.log(JSON.stringify($scope.currentUser))
 		$http({
 			method:'PUT',
-			url: '/api/profile' + (($scope.currentUser.local.password.length >0 || $scope.currentUser.local.password.length != null)? "?pass=true" : ""),
+			url: '/api/profile' + ($scope.currentUser.local.password.length >0 ? "?pass=true" : ""),
 			data: $scope.currentUser
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			$scope.currentUser = response.data.result
 			$scope.currentUser.local.birthday = new Date(response.data.result.local.birthday)
+			$scope.currentUser.local.password = ""
 		}, function error(response){
 			console.log(JSON.stringify(response.data));
 		});

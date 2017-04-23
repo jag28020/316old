@@ -10,7 +10,8 @@ var modules = [
 	'cloudinary',
 	'FeedModule',
 	'PostModule',
-	'NewPostModule'
+	'NewPostModule',
+	'ProductsModule'
 ];
 
 var app = angular.module('316Beauty', modules, function($interpolateProvider){

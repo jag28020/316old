@@ -2,7 +2,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var InstagramStrategy = require('passport-instagram').Strategy;
 var Profile = require('../models/Profile');
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcryptjs')
 var configAuth = require('./auth'); //use env variables for production
 
 function isValidPassword(pass, hashPass){

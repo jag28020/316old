@@ -49,6 +49,10 @@ module.exports = function(passport){
         res.render('blog-single-no-sidebar')
     });
 
+    router.get('/products', function(req, res) {
+        res.render('shop-fullwidth')
+    });
+
     router.get('/newpost', function(req, res) {
         res.render('newpost')
     });

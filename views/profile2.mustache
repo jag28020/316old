@@ -20,23 +20,61 @@
                             <div class="overflow-hidden">
                                 <hr>
                                 <h6 class="uppercase">
-                                    1. What are your interests?
+                                    My interests
                                 </h6>
                                 <div class="col-sm-4">
-                                    <a id="clothes" ng-click="toggleTag($event, 'clothes')" class="btn btn-sm btn-rounded">Clothes</a>
+                                    <a id="fashion" ng-click="toggleTag($event, 'fashion')" class="btn btn-sm btn-rounded">Fashion</a>
                                 </div>
                                 <div class="col-sm-4">
-                                    <a id="makeup" ng-click="toggleTag($event, 'makeup')" class="btn btn-sm btn-rounded">Makeup</a>
+                                    <a id="cosmetics" ng-click="toggleTag($event, 'cosmetics')" class="btn btn-sm btn-rounded">Cosmetics</a>
                                 </div>
                                 <div class="col-sm-4">
                                     <a id="hair" ng-click="toggleTag($event, 'hair')" class="btn btn-sm btn-rounded">Hair</a>
                                 </div>
                                 <hr>
                             </div>
+
+                            <div ng-show="currentUser.local.tags.indexOf('fashion')>=0" class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    Fashion preferences
+                                </h6>
+                                <a id="trendy" ng-click="toggleTag($event, 'trendy')" class="btn btn-sm btn-rounded">Trendy</a>
+                                <a id="casual" ng-click="toggleTag($event, 'casual')" class="btn btn-sm btn-rounded">Casual</a>
+                                <a id="vibrant" ng-click="toggleTag($event, 'vibrant')" class="btn btn-sm btn-rounded">Vibrant</a>
+                                <a id="preppy" ng-click="toggleTag($event, 'preppy')" class="btn btn-sm btn-rounded">Preppy</a>
+                                <a id="sexy" ng-click="toggleTag($event, 'sexy')" class="btn btn-sm btn-rounded">Sexy</a>
+                                <a id="elegant" ng-click="toggleTag($event, 'elegant')" class="btn btn-sm btn-rounded">Elegant</a>
+                                <a id="bohemian" ng-click="toggleTag($event, 'bohemian')" class="btn btn-sm btn-rounded">Bohemian</a>
+                                <a id="girly" ng-click="toggleTag($event, 'girly')" class="btn btn-sm btn-rounded">Girly</a>
+                                <a id="cowgirl" ng-click="toggleTag($event, 'cowgirl')" class="btn btn-sm btn-rounded">Cowgirl</a>
+                                <a id="gnd" ng-click="toggleTag($event, 'gnd')" class="btn btn-sm btn-rounded">Girl Next Door</a>
+                                <a id="punk" ng-click="toggleTag($event, 'punk')" class="btn btn-sm btn-rounded">Punk</a>
+                                <a id="sporty" ng-click="toggleTag($event, 'sporty')" class="btn btn-sm btn-rounded">Sporty</a>
+                                <a id="artsy" ng-click="toggleTag($event, 'artsy')" class="btn btn-sm btn-rounded">Artsy</a>
+                                <a id="business" ng-click="toggleTag($event, 'business')" class="btn btn-sm btn-rounded">Business Women</a>
+                                <a id="tomboy" ng-click="toggleTag($event, 'tomboy')" class="btn btn-sm btn-rounded">Tomboy</a>
+                                <a id="gothic" ng-click="toggleTag($event, 'gothic')" class="btn btn-sm btn-rounded">Gothic</a>
+                                <a id="rocker" ng-click="toggleTag($event, 'rocker')" class="btn btn-sm btn-rounded">Rocker</a>
+                                <hr>
+                            </div>
+
+                            <div ng-show="currentUser.local.tags.indexOf('cosmetics')>=0" class="overflow-hidden">
+                                <h6 class="uppercase">
+                                    Cosmetics preferences
+                                </h6>
+                                <a id="drugstore" ng-click="toggleTag($event, 'drugstore')" class="btn btn-sm btn-rounded">Drug Store</a>
+                                <a id="affordable" ng-click="toggleTag($event, 'affordable')" class="btn btn-sm btn-rounded">Affordable</a>
+                                <a id="highend" ng-click="toggleTag($event, 'highend')" class="btn btn-sm btn-rounded">High End</a>
+                                <a id="luxury" ng-click="toggleTag($event, 'luxury')" class="btn btn-sm btn-rounded"> Luxury</a>
+                                <hr>
+                            </div>
+
+
+
                             
                             <div >
                                 <h6 class="uppercase">
-                                    2. Your personal details
+                                    My details
                                 </h6>
                                 <div class="row">
                                     <input ng-model="currentUser.local.name" type="text" name="name" class="col-md-6" placeholder=" Full Name" />
@@ -52,7 +90,7 @@
                             <div class="overflow-hidden">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <h6 class="uppercase">
-                                        3. Social media accounts
+                                        Social media accounts
                                     </h6>
                                 </div>
 
@@ -78,22 +116,6 @@
                                     </div>
 
 
-                                <hr/>
-                            </div>
-
-                            <div class="overflow-hidden">
-                                <h6 class="uppercase">
-                                    4. Add tags to your profile
-                                </h6>
-                                <a id="nyxcosmetics" ng-click="toggleTag($event, 'nyxcosmetics')" class="btn btn-sm btn-rounded">NYX Cosmetics</a>
-                                <a id="elfcosmetics" ng-click="toggleTag($event, 'elfcosmetics')" class="btn btn-sm btn-rounded">e.l.f. Cosmetics</a>
-                                <a id="occ" ng-click="toggleTag($event, 'occ')" class="btn btn-sm btn-rounded">Obsessive Compulsive Cosmetics</a>
-                                <a id="essence" ng-click="toggleTag($event, 'essence')" class="btn btn-sm btn-rounded">Essence</a>
-                                <a id="pf" ng-click="toggleTag($event, 'pf')" class="btn btn-sm btn-rounded">Physicians Formula</a>
-                                <a id="2bcolours" ng-click="toggleTag($event, '2bcolours')" class="btn btn-sm btn-rounded">2b Colours</a>
-                                <a id="barrym" ng-click="toggleTag($event, 'barrym')" class="btn btn-sm btn-rounded">Barry M</a>
-                                <a id="bhcosmetics" ng-click="toggleTag($event, 'bhcosmetics')" class="btn btn-sm btn-rounded">BH Cosmetics</a>
-                                <a id="bourjois" ng-click="toggleTag($event, 'bourjois')" class="btn btn-sm btn-rounded">Bourjois</a>
                                 <hr/>
                             </div>
 

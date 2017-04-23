@@ -20,8 +20,30 @@
 
                             <div>
                                 <h6 class="uppercase">
-                                    1. Profile Details
+                                    Profile Details
                                 </h6>
+
+                                <div>
+                                    <cl-image style="margin-left:auto; margin-right:auto" ng-if="currentUser.local.image != '' " public-id="<%currentUser.local.image%>" class="thumbnail inline" format="jpg">
+                                        <cl-transformation height="150" width="150" crop="fill" />
+                                    </cl-image>
+                                    <div id="direct_upload" 
+                                        ngf-drop="uploadFiles($files, 'profilepic')"
+                                        ngf-drag-over-class="dragOverClass($event)"
+                                        ng-model="files"
+                                        ng-multiple="true">
+                                        <form>
+                                            <div class="form_line">
+                                                <div class="form_controls">
+                                                    <div>
+                                                        <a class="btn btn-md btn-rounded" ngf-select="uploadFiles($files, 'profilepic')" multiple title="upload" resetOnClick="true" ><span class="fa fa-picture-o"></span> Upload Profile Pic</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>                                        
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <input ng-model="currentUser.local.brandName" type="text" class="col-md-6" placeholder=" Brand Name" />
                                     <input ng-model="currentUser.local.brandEmail" type="text" class="col-md-6" placeholder="Public Email" />
@@ -41,7 +63,7 @@
                             <div class="overflow-hidden">
                                 <div class="col-sm-6 col-sm-offset-3">
                                     <h6 class="uppercase">
-                                        2. Social media accounts
+                                        Social media accounts
                                     </h6>
                                 </div>
 
@@ -70,7 +92,7 @@
 
                             <div class="overflow-hidden">
                                 <h6 class="uppercase">
-                                    3. Manage Products
+                                    Manage Products
                                 </h6>
                             
                                 <div class="col-md-4" ng-repeat="product in products track by $index">
@@ -104,7 +126,7 @@
 
                             <div class="overflow-hidden">
                                 <h6 class="uppercase">
-                                    4. Add Product
+                                    Add Product
                                 </h6>
                                 <div>
                                     <cl-image style="margin-left:auto; margin-right:auto" ng-if="newProduct.image != '' " public-id="<%newProduct.image%>" class="thumbnail inline" format="jpg">

@@ -1,5 +1,5 @@
 var Profile = require('../models/Profile');
-var bcrypt = require('bcrypt')
+var bcrypt = require('bcryptjs')
 
 module.exports = {
 
@@ -14,6 +14,7 @@ module.exports = {
 					"local.birthday": params.local.birthday, 
 					"local.name": params.local.name,
 					"local.tags": params.local.tags,
+					"local.image": params.local.image,
 					"local.brandName": params.local.brandName,
 					"local.brandEmail": params.local.brandEmail,
 					"local.brandPhone": params.local.brandPhone,
@@ -34,6 +35,7 @@ module.exports = {
 					"local.birthday": params.local.birthday, 
 					"local.name": params.local.name, 
 					"local.tags": params.local.tags,
+					"local.image": params.local.image,
 					"local.brandName": params.local.brandName,
 					"local.brandEmail": params.local.brandEmail,
 					"local.brandPhone": params.local.brandPhone,

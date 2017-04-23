@@ -100,7 +100,6 @@ brandCtr.controller('BrandController', ['$scope', '$http', 'Upload', 'cloudinary
 		});
 	}
 
-
 	$scope.uploadFiles = function(files, index){
 		var d = new Date();
       	$scope.title = "Image (" + d.getDate() + " - " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + ")";
@@ -121,7 +120,11 @@ brandCtr.controller('BrandController', ['$scope', '$http', 'Upload', 'cloudinary
             	console.log(file.status)
           	}).success(function (data, status, headers, config) {
           		console.log("data: " + JSON.stringify(data))
-          		if (index == 'newProduct')
+          		if (index == 'profilepic'){
+          			$scope.currentUser.local.image = data.public_id
+          			$scope.updateProfile()
+          		}
+          		else if (index == 'newProduct')
    					$scope.newProduct.image = data.public_id
    				else
    					$scope.products[index].image = data.public_id

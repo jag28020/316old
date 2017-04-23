@@ -7,6 +7,7 @@ var ProductSchema = new mongoose.Schema({
   brandId: {type: String, trim: true, default:''},
   link: {type: String, trim: true, default:''},
   image: {type: String, trim: true, default:''},
+  isFeatured: {type: String, trim: true, default:'false'},
   clicks: {type: Number, default: 0},
   tags: {type: Array, default: []}
 });
@@ -21,6 +22,7 @@ ProductSchema.methods.summary = function(){
     'price': this.price,
     'brandId': this.brandId,
     'link': this.link,
+    'isFeatured': this.isFeatured,
     'clicks': this.clicks,
     'tags': this.tags,
   };
