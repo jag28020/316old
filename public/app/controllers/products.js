@@ -5,7 +5,9 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 
 	$scope.init = function(){
 		console.log('Products Controller INIT');
-		getCurrentUser();
+		getCurrentUser()
+		getProducts()
+		getBrands()
 	}
 
 
