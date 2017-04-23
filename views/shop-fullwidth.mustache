@@ -18,14 +18,14 @@
                         </div>
                     </div>
                     <div class="row mt8">
-                        <div ng-show="brands" ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1': $first }" class="col-md-2 text-center">
+                        <div ng-cloak ng-show="brands" ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1': $first }" class="col-md-2 text-center">
                             <a href="#">
-                                <cl-image style="border-radius:16px;" public-id="<%brand.local.image%>" width="120" height="120" radius="max" crop="fill" format="jpg">
+                                <cl-image ng-cloak style="border-radius:16px;" public-id="<%brand.local.image%>" width="120" height="120" radius="max" crop="fill" format="jpg">
                                     <cl-transformation width="120" height="120" radius="max" crop="fill" />
                                 </cl-image>
                             </a>
                             <div class="title">
-                                <h5 class="mb0"><%brand.local.brandName%></h5>
+                                <h5 ng-cloak class="mb0"><%brand.local.brandName%></h5>
                             </div>
                         </div>
                                                 
