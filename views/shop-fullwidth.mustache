@@ -17,7 +17,7 @@
                             <p class="lead mb10">Use the links below for <strong>exclusive discounts.</strong></p>
                         </div>
                     </div>
-                    <div class="row mt8">
+                    <div ng-cloak class="row mt8">
                         <div ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1': $first }" class="col-md-2 text-center">
                             <a href="#">
                                 <cl-image style="border-radius:16px;" public-id="<%brand.local.image%>" width="120" height="120" radius="max" crop="fill" format="jpg">
@@ -54,127 +54,21 @@
                         </div>
                     </div>
                     <div class="row masonry">
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
+                        <div ng-cloak ng-repeat="product in products track by $index" class="col-md-4 col-sm-4 masonry-item col-xs-12">
                             <div class="image-tile outer-title text-center">
                                 <a href="#">
-                                    <cl-image class="product-thumb" public-id="wlhlwsdmzcrftuhvws6g" width="180" height="240" radius="max" crop="fill" format="jpg">
+                                    <span ng-show="$first" class="label">Sale</span>
+                                    <cl-image class="product-thumb" public-id="<%product.image%>" width="180" height="240" radius="max" crop="fill" format="jpg">
                                     <cl-transformation width="180" height="240" radius="max" crop="fill" />
                                 </cl-image>
                                 </a>
                                 <div class="title">
-                                    <h5 class="mb0">Adrian
-                                        <br /> LambsWool Cap</h5>
-                                    <span class="display-block mb16">$49.95</span>
+                                    <h5 class="mb0"><%product.name%>
+                                        <br /> <%product.description%></h5>
+                                    <span class="display-block mb16"><% product.price %></span>
                                 </div>
                             </div>
                         </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-2.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Stanley
-                                        <br /> Leather Wallet</h5>
-                                    <span class="display-block mb16">$69.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <span class="label">Sale</span>
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-4.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Logan
-                                        <br /> Canvas Backpack</h5>
-                                    <span class="display-block mb16">$119.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-7.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Vladimir
-                                        <br />Stainless Flask</h5>
-                                    <span class="display-block mb16">$49.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-8.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Nathan
-                                        <br /> Cashmere Beanie</h5>
-                                    <span class="display-block mb16">$45.00</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-5.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Nicholas
-                                        <br /> Dune Shades</h5>
-                                    <span class="display-block mb16">$79.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <span class="label">Hot</span>
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-9.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Bobby
-                                        <br />Shaving Brush</h5>
-                                    <span class="display-block mb16">$27.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-13.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Bradley
-                                        <br /> Leather Journal</h5>
-                                    <span class="display-block mb16">$29.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
-                        <div class="col-md-4 col-sm-4 masonry-item col-xs-12">
-                            <div class="image-tile outer-title text-center">
-                                <a href="#">
-                                    <img alt="Pic" class="product-thumb" src="img/shop-product-11.jpg" />
-                                </a>
-                                <div class="title">
-                                    <h5 class="mb0">Mack
-                                        <br /> Steel Canteen</h5>
-                                    <span class="display-block mb16">$34.95</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--end three col-->
                     </div>
                     <!--end of row-->
                 </div>
