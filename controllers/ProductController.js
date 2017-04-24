@@ -27,7 +27,26 @@ module.exports = {
 	},
 
 	get: function(params, completion){
+		console.log(params)
 		Product.find(params, function(err, product){
+			if (err){
+				completion(err, null);
+				return;
+			}
+
+			var list = [];
+			for (var i=0; i<product.length;i++){
+				list.push(product[i].summary());
+			}
+			completion(null, list);
+			return;
+		});
+		return;
+	},
+
+	getByTags: function(params, completion){
+		console.log(params)
+		Product.find({'tags': { "$in" : [params.tags]}}, function(err, product){
 			if (err){
 				completion(err, null);
 				return;

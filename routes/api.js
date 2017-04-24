@@ -64,15 +64,28 @@ module.exports = function(passport){
 			res.json(createError('Invalid resource'));
 			return;
 		}
-		controller.get(req.query, function(err, results){
-			if (err){
-				res.json(createError(err));
+		if (req.query.tags){
+			controller.getByTags(req.query, function(err, results){
+				if (err){
+					res.json(createError(err));
+					return;
+				}
+				res.json(createResult(results));
 				return;
-			}
-			res.json(createResult(results));
+			});
 			return;
-		});
-		return;
+		}
+		else{
+			controller.get(req.query, function(err, results){
+				if (err){
+					res.json(createError(err));
+					return;
+				}
+				res.json(createResult(results));
+				return;
+			});
+			return;
+		}
 	});
 
 	router.get('/:resource/:id', function(req, res, next){

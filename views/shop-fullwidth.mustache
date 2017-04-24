@@ -39,11 +39,13 @@
                         <div class="col-md-2 col-sm-4 masonry-item col-xs-12">
                             <div class="select-option">
                                 <i class="ti-angle-down"></i>
-                                <select>
-                                    <option selected value="Default">Sort By</option>
-                                    <option value="Small">Sort Filer 1</option>
-                                    <option value="Medium">Sort Filer 2</option>
-                                    <option value="Larger">Sort Filer 3</option>
+                                <select ng-change="filter()" ng-model="selected">
+                                    <option selected value="default">Sort By</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="makeup">Makeup</option>
+                                    <option value="skincare">Skincare</option>
+                                    <option value="hair">Hair</option>
+                                    <option value="nails">Nails</option>
                                 </select>
                             </div>
                         </div>

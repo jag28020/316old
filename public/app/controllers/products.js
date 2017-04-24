@@ -2,12 +2,30 @@ var productCtr = angular.module('ProductsModule', []);
 
 productCtr.controller('ProductsController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
+	$scope.selected = "Default"
 
 	$scope.init = function(){
 		console.log('Products Controller INIT');
 		getCurrentUser()
 		getProducts()
 		getBrands()
+	}
+
+	$scope.filter = function(){
+		console.log("filter: " + $scope.selected)
+		if ($scope.selected != "default")
+		$http({
+			method:'GET',
+			url: '/api/product?tags='+$scope.selected
+		}).then(function success(response){
+			console.log(JSON.stringify(response.data));
+			if (response.data.confirmation == 'success'){
+				// $scope.products = response.data.result
+			}
+		}, function error(response){
+			console.log(JSON.stringify(response.data));
+		})
+
 	}
 
 
