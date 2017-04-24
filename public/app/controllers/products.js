@@ -20,7 +20,7 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			if (response.data.confirmation == 'success'){
-				// $scope.products = response.data.result
+				$scope.products = response.data.result
 			}
 		}, function error(response){
 			console.log(JSON.stringify(response.data));
