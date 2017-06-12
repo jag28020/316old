@@ -1,63 +1,47 @@
-<div ng-cloak class="nav-container">
-    <nav class="nav-centered">
-        <div class="nav-bar text-center">
-            <div class="module widget-handle mobile-toggle right visible-sm visible-xs">
-                <i class="ti-menu"></i>
+<!-- HEADER -->
+    <header id="header" class="wrapper transparent text-light not-sticky">        
+        <div class="header-inner clearfix">
+            
+            <!-- LOGO -->
+            <div id="logo">
+                <a href="index.html">
+                    <img id="dark-logo" src="files/uploads/logo-dani-dark.png" srcset="files/uploads/logo-dani-dark.png 1x, files/uploads/logo-dani-dark@2x.png 2x" alt="Logo Dark">
+                    <img id="light-logo" src="files/uploads/logo-dani-light.png" srcset="files/uploads/logo-dani-light.png 1x, files/uploads/logo-dani-light@2x.png 2x" alt="Logo light">
+                </a>
             </div>
-            <div ng-cloak class="module-group text-left">
-                <div ng-show='currentUser.id == null ' class="module right">
-                    <ul class="menu">
-                        <li>
-                            <a href="/">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/products">
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/feed">
-                                Feed
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div ng-show='currentUser.id.length > 0 ' class="module right">
-                    <ul class="menu">
-                        <li>
-                            <a href="/">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/feed">
-                                Feed
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/products">
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/profile">
-                                Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/logout">
-                                Logout
-                            </a>
-                         
-                        </li>
-                    </ul>
-                </div>
-                <!--end of menu module-->
-            </div>
-            <!--end of module group-->
-        </div>
-
-    </nav>
-</div>
+            
+            <!-- MAIN NAVIGATION -->
+            <div id="menu" class="clearfix">
+            
+                <div class="menu-actions clearfix">
+                    <div class="menu-toggle"><span class="hamburger"></span><span class="cross"></span></div>
+                </div> <!-- END .menu-actions -->
+                
+                <div id="menu-inner">
+                    <nav id="main-nav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="portfolio-masonry-col3.html">Products</a></li>
+                            <li><a href="blog-minimal-grid.html">Blog</a></li>
+                            <li><a href="index.html">Profile</a></li>
+                            <li><a href="index.html">Logout</a></li>
+                        </ul>
+                    </nav>
+                    <div id="menu-widget">
+                        <div class="widget widget_social">
+                            <ul class="socialmedia-widget">
+                                <li class="facebook"><a href="#"></a></li>
+                                <li class="twitter"><a href="#"></a></li>
+                                <li class="instagram"><a href="#"></a></li>
+                                <li class="youtube"><a href="#"></a></li>
+                                <li class="vimeo"><a href="#"></a></li>
+                                <li class="mail"><a href="mailto:info@316beauty.io"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div><!-- END #main-nav -->
+            </div><!-- END #menu -->
+            
+        </div> <!-- END .header-inner -->
+    </header>
+    <!-- HEADER end -->

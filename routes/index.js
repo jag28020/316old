@@ -29,9 +29,30 @@ var options = {
 
 module.exports = function(passport){
 
-    router.get('/', function(req, res) {
-        res.render('home')
+    /* GET home page. */
+    router.get('/', function(req, res, next) {
+      res.render('index');
     });
+
+    router.get('/index.html', function(req, res, next) {
+      res.render('index');
+    });
+
+    router.get('/portfolio-masonry-col3.html', function(req, res, next) {
+      res.render('portfolio-masonry-col3');
+    });
+
+    router.get('/blog-minimal-grid.html', function(req, res, next) {
+      res.render('blog-minimal-grid');
+    });
+
+    router.get('/blog-single-gallery.html', function(req, res, next) {
+      res.render('blog-single-gallery');
+    });
+
+    // router.get('/', function(req, res) {
+    //     res.render('home')
+    // });
 
     router.get('/lookbook', function(req, res) {
         res.render('blog-masonry')

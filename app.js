@@ -11,8 +11,6 @@ var express = require('express'),
     passportConfig = require('./config/passport'),
     dbConfig = require('./config/db')
 
-
-
 mongoose.Promise = global.Promise
 mongoose.connect(dbConfig.url, function (err, res) {
   if (err)

@@ -3,6 +3,8 @@ var productCtr = angular.module('ProductsModule', []);
 productCtr.controller('ProductsController', ['$scope', '$http', '$window', function($scope, $http, $window){
 
 	$scope.selected = "default"
+	$scope.products = {}
+	$scope.brands = {}
 
 	$scope.init = function(){
 		console.log('Products Controller INIT');
@@ -13,6 +15,7 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 
 	$scope.filter = function(){
 		console.log("filter: " + $scope.selected)
+		if ($scope.products)
 		var query = $scope.selected=='default' ? '' : '?tags=' + $scope.selected
 		$http({
 			method:'GET',
@@ -64,7 +67,7 @@ productCtr.controller('ProductsController', ['$scope', '$http', '$window', funct
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
 			if (response.data.confirmation == 'success'){
-				$scope.products = response.data.result
+				$scope.products.default = response.data.result
 			}
 		}, function error(response){
 			console.log(JSON.stringify(response.data));

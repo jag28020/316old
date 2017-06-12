@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {{>head}}
+    </head>
+    <body ng-app="316Beauty" ng-controller="ProductsController" ng-init="init()" class="scroll-assist">
+        {{>nav}}
+        <div ng-cloak class="main-container">
+            <section ng-cloak class="page-title page-title-2 image-bg overlay parallax">
+                <div class="background-image-holder">
+                    <img alt="Background Image" class="background-image" src="img/wide-1.jpg" />
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="mb8">Curated, Must-Have Products</h2>
+                            <p class="lead mb10">Use the links below for <strong>exclusive discounts.</strong></p>
+                        </div>
+                    </div>
+                    <div class="row mt8">
+                        <div ng-cloak ng-show="brands" ng-repeat="brand in brands track by $index" ng-class="{ 'col-md-offset-1 col-sm-offset-1': $first }" class="col-md-2 col-sm-2 col-xs-2 text-center">
+                            <a href="#">
+                                <cl-image ng-cloak style="border-radius:20px;border: 2px solid #222" public-id="<%brand.local.image%>" width="100" height="100" radius="max" crop="fill" format="jpg">
+                                    <cl-transformation width="100" height="100" radius="max" crop="fill" />
+                                </cl-image>
+                            </a>
+                            <div class="title">
+                                <h5 ng-cloak class="mb0"><%brand.local.brandName%></h5>
+                            </div>
+                        </div>
+                                                
+                    </div>
+                </div>
+                <!--end of container-->
+            </section>
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 masonry-item col-xs-12">
+                            <div class="select-option">
+                                <i class="ti-angle-down"></i>
+                                <select ng-change="filter()" ng-model="selected">
+                                    <option selected value="default">Featured</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="makeup">Makeup</option>
+                                    <option value="skincare">Skincare</option>
+                                    <option value="hair">Hair</option>
+                                    <option value="nails">Nails</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row masonry">
+                        <div ng-cloak ng-repeat="product in products.selected track by $index" class="col-md-4 col-sm-4 masonry-item col-xs-12">
+                            <div class="image-tile outer-title text-center">
+                                <a href="https://<%product.link%>" target="_blank">
+                                    <span ng-show="$first" class="label">31.6 Pick</span>
+                                    <cl-image class="product-thumb" public-id="<%product.image%>" width="180" height="240" radius="max" crop="fill" format="jpg">
+                                    <cl-transformation width="180" height="240" radius="max" crop="fill" />
+                                </cl-image>
+                                </a>
+                                <div class="title">
+                                    <h5 class="mb0"><%product.name%>
+                                        <br /> <%product.description%></h5>
+                                    <span class="display-block mb16"><% product.price | currency %></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end of row-->
+                </div>
+                <!--end of container-->
+            </section>
+            {{>footer}}
+        </div>
+        {{>scripts}}
+    </body>
+</html>
