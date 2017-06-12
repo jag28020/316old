@@ -46,8 +46,8 @@ module.exports = function(passport){
       res.render('blog-minimal-grid');
     });
 
-    router.get('/blog-single-gallery.html', function(req, res, next) {
-      res.render('blog-single-gallery');
+    router.get('/blog-single-slider.html', function(req, res, next) {
+      res.render('blog-single-slider');
     });
 
     // router.get('/', function(req, res) {
