@@ -38,6 +38,10 @@ module.exports = function(passport){
       res.render('index');
     });
 
+    router.get('/index', function(req, res, next) {
+      res.render('index');
+    });
+
     router.get('/join', function(req, res, next) {
       res.render('join');
     });
@@ -180,7 +184,7 @@ module.exports = function(passport){
                     res.json(createError(err)) 
                     return
                 }
-                res.redirect('/index')
+                res.redirect('/')
                 return
             })
         })(req, res, next)
@@ -204,7 +208,7 @@ module.exports = function(passport){
                     res.json(createError(err)) 
                     return
                 }
-                res.redirect('/index')
+                res.redirect('/')
                 return
             })
         })(req, res, next)
