@@ -1,6 +1,4 @@
-<!-- HEADER -->
-    <header id="header" class="wrapper transparent text-light not-sticky">        
-        <div class="header-inner clearfix">
+<div class="header-inner clearfix">
             
             <!-- LOGO -->
             <div id="logo">
@@ -23,8 +21,9 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="portfolio-masonry-col3.html">Products</a></li>
                             <li><a href="blog-minimal-grid.html">Blog</a></li>
-                            <li><a href="index.html">Profile</a></li>
-                            <li><a href="index.html">Logout</a></li>
+                            <li ng-show="!currentUser"><a href="/join">Login/Join</a></li>
+                            <li ng-show="currentUser"><a href="index.html">Profile</a></li>
+                            <li ng-show="currentUser"><a href="/logout">Logout</a></li>
                         </ul>
                     </nav>
                     <div id="menu-widget">
@@ -43,5 +42,3 @@
             </div><!-- END #menu -->
             
         </div> <!-- END .header-inner -->
-    </header>
-    <!-- HEADER end -->

@@ -1,0 +1,116 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+{{>head}}
+
+    <title>31.6 Beauty</title>
+
+</head>
+
+<body ng-app="316Beauty" ng-controller="JoinController" ng-init="init()">
+
+<!-- PAGE LOADER -->
+<div id="page-loader" class="pulsing">
+	<div class="loader-name">
+        <img src="files/uploads/logo-dani-dark.png" srcset="files/uploads/logo-dani-dark.png 1x, files/uploads/logo-dani-dark@2x.png 2x" alt="Loader Logo">
+        <!-- <span class="uppercase">31.6 Beauty</span> -->
+    </div>
+    <div class="loader-circle">
+    	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 253.4 253.4" style="enable-background:new 0 0 253.4 253.4;" xml:space="preserve"><circle cx="126.7" cy="126.7" r="124.2"/>
+		</svg>
+   	</div>
+</div>
+<!-- PAGE LOADER -->
+
+
+<!-- PAGE CONTENT -->
+<div id="page-content">
+	
+	<!-- HEADER -->
+    <header id="header" class="wrapper transparent text-dark not-sticky">        
+        {{>nav}}
+    </header>
+    <!-- HEADER end -->
+	
+	<!-- PAGEBODY -->
+	<section id="page-body">
+    	<div class="spacer-big"></div>
+        <div class="spacer-small"></div>
+                        
+        <div class="wrapper align-center">
+            <h2>Join for exclusive <strong><em>discounts, articles &amp; tips</em></strong> - <br/>courtesy of <strong><em>Kelsie Ann</em></strong>.</h2>
+            <div class="spacer-medium"></div>
+            <div class="column one-half">
+                <form id="contact-form" class="checkform sendemail">
+                    <div class="form-row">
+                        <label for="name">Email</label>
+                        <input ng-model="profile.email" type="text" class="name" />
+                    </div>
+                    <div class="form-row">
+                        <label for="email">Password</label>
+                        <input ng-model="profile.password" type="password" class="email"/>
+                    </div>
+                    <div class="form-row">
+                         <a ng-click="login()" href="#" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-user"></i> Login</a>&nbsp; 
+                         <a ng-click="register()" href="#" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-user"></i> Join</a>
+                    </div>
+                </form>
+            </div>
+            <div class="column one-half last-col">
+                <form id="contact-form" class="checkform sendemail">
+                    <div class="form-row">
+                        <label>Social Media Login</label>
+                         <a href="/auth/facebook" class="sr-button button-big"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a>&nbsp; 
+                         <a href="/auth/instagram" class="sr-button button-big"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
+                    </div>
+                </form>
+            </div>
+
+               
+
+            <!-- <p><a class="sr-button-icon button-medium" href="http://player.vimeo.com/video/129976307" data-rel="lightcase"><i class="fa fa-play"></i></a></p> -->
+        </div> <!-- END .wrapper -->
+            
+       
+       	<div class="spacer-big"></div>
+                
+        <div class="wrapper">
+       
+            <div class="column-section clearfix">
+                <div class="column one-fourth align-center">
+                    <i class="ion ion-ios-paper-outline ion-6x"></i>
+                    <h3>Social Blog</h3>
+                    <p>Write articles, advice and reviews to engage the 31.6 community. Share your posts via social media to spark the discussion.</p>
+                </div>
+                <div class="column one-fourth align-center">
+                    <i class="ion ion-bag ion-6x"></i>
+                    <h3>Exclusive Discounts</h3>
+                    <p>Browse our curated lists to find quality products. Use links from our site to automatically apply exclusive discounts.</p>
+                </div>
+                <div class="column one-fourth align-center">
+                    <i class="ion ion-person ion-6x"></i>
+                    <h3>Smart Profiles</h3>
+                    <p>Tell us what you like, and we'll find fashion, cosmetic and hair products to match your style.</p>
+                </div>
+                <div class="column one-fourth last-col align-center">
+                    <i class="ion ion-images ion-6x"></i>
+                    <h3>Lookbook</h3>
+                    <p>Check out Kelsie Ann's seasonal lookbooks for her unique style tips.</p>
+                </div>
+            </div>
+       
+        </div> <!-- END .wrapper -->
+       
+        <div class="spacer-big"></div>
+                         
+ 	</section>
+	<!-- PAGEBODY -->
+    {{>footer}}
+    
+</div> <!-- END #page-content -->
+<!-- PAGE CONTENT -->
+
+{{>scripts}}
+
+</body>
+</html>

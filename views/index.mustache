@@ -7,7 +7,7 @@
 
 </head>
 
-<body>
+<body ng-app="316Beauty" ng-controller="HomeController" ng-init="init()">
 
 <!-- PAGE LOADER -->
 <div id="page-loader" class="pulsing">
@@ -26,7 +26,9 @@
 <!-- PAGE CONTENT -->
 <div id="page-content">
 	
-	{{>nav}}
+	<header id="header" class="wrapper transparent text-light not-sticky">        
+        {{>nav}}
+    </header>
     
     <!-- HERO  -->
 	<section id="hero" class="hero-auto">
@@ -73,9 +75,9 @@
                             A social platform for discovering quality products.
                         </div>
 
-                        <div class="tp-caption dani-caption align-center"                
+                        <div ng-cloak ng-show="!currentUser" class="tp-caption dani-caption align-center"                
                             data-x="center" data-hoffset="0" 
-                            data-y="center" data-voffset="['140','140','130','115']"
+                            data-y="center" data-voffset="['140','140','130','160']"
                             data-fontsize="['36','36','30','22']"
                             data-lineheight="['46','46','38','28']"
                             data-width="['none','full','full','280px']"
@@ -86,7 +88,25 @@
                             data-transform_out="o:0"                             
                             data-start="1000"
                             data-responsive_offset="on">
-                            <a href="#" class="sr-button button-big style-2">Login/Join</a>
+                            <a href="/join" class="sr-button button-medium style-2"><i class="fa fa-user"></i> Login/Join</a>
+                            <a href="/auth/facebook" class="sr-button button-medium style-2"><i class="fa fa-facebook-square"></i> Facebook</a>
+                            <a href="/auth/instagram" class="sr-button button-medium style-2"><i class="fa fa-instagram"></i> Instagram</a>
+                        </div>
+
+                        <div ng-cloak ng-show="currentUser" class="tp-caption dani-caption align-center"                
+                            data-x="center" data-hoffset="0" 
+                            data-y="center" data-voffset="['140','140','130','160']"
+                            data-fontsize="['36','36','30','22']"
+                            data-lineheight="['46','46','38','28']"
+                            data-width="['none','full','full','280px']"
+                            data-height="auto"
+                            data-whitespace="['nowrap','nowrap','nowrap','normal']"
+                            data-transform_idle="o:1"   
+                            data-transform_in="o:0;s:500;e:Power1.easeInOut;" 
+                            data-transform_out="o:0"                             
+                            data-start="1000"
+                            data-responsive_offset="on">
+                            Welcome back!
                         </div>
 
 
@@ -106,9 +126,13 @@
     	<div class="spacer-big"></div>
                         
         <div class="wrapper align-center">
-            <h2>Join for exclusive <strong><em>discounts, articles &amp; tips</em></strong> - <br/>courtesy of <strong><em>Kelsie Ann</em></strong>.</h2>
-            <div class="spacer-medium"></div>
-            <a href="#" class="sr-button button-big style-2">Login/Join</a>
+            <div ng-show="!currentUser">
+                <h2>Join for exclusive <strong><em>discounts, articles &amp; tips</em></strong> - <br/>courtesy of <strong><em>Kelsie Ann</em></strong>.</h2>
+                <div class="spacer-medium"></div>
+                <a href="/join" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-user"></i> Login/Join</a>
+                <a href="/auth/facebook" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-facebook-square"></i> Facebook</a>
+                <a href="/auth/instagram" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-instagram"></i> Instagram</a>
+            </div>
             <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-2 fitrows isotope-spaced clearfix">
                  <div class="isotope-item portfolio-item">
                     <div class="portfolio-item-inner item-inner">
