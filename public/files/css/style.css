@@ -3997,18 +3997,18 @@ div.alert-confirm { background: #a8ce77; }
 ------------------------------------------------*/
 
 /* 	Depending on your logo height you want to use, please adapt the values below */
-header #logo { height: 30px; }
-header.menu-open nav#main-nav ul > li > a { height: 30px; line-height: 30px; }
-header .menu-toggle { height: calc(50px + 30px); }
-header.wrapper:not(.small-header) .menu-toggle { height: calc(100px + 30px); }
-header:not(.transparent) + #hero, header:not(.transparent) + #page-body { margin-top: calc(50px + 30px); }
-header[class*='wrapper']:not(.transparent) + #hero, header[class*='wrapper']:not(.transparent) + #page-body { margin-top: calc(100px + 30px); }
-header:not(.transparent) + #hero.hero-full { min-height: calc(100vh - 50px - 30px); }
-header:not(.transparent) + #hero.hero-big { min-height: calc(75vh - 50px - 30px); }
-header[class*='wrapper']:not(.transparent) + #hero.hero-full { min-height: calc(100vh - 100px - 30px); }
-header[class*='wrapper']:not(.transparent) + #hero.hero-big { min-height: calc(75vh - 100px - 30px); }
+header #logo { height: 80px; }
+header.menu-open nav#main-nav ul > li > a { height: 30px; line-height: 80px; }
+header .menu-toggle { height: calc(50px + 80px); }
+header.wrapper:not(.small-header) .menu-toggle { height: calc(100px + 80px); }
+header:not(.transparent) + #hero, header:not(.transparent) + #page-body { margin-top: calc(50px + 80px); }
+header[class*='wrapper']:not(.transparent) + #hero, header[class*='wrapper']:not(.transparent) + #page-body { margin-top: calc(100px + 80px); }
+header:not(.transparent) + #hero.hero-full { min-height: calc(100vh - 50px - 80px); }
+header:not(.transparent) + #hero.hero-big { min-height: calc(75vh - 50px - 80px); }
+header[class*='wrapper']:not(.transparent) + #hero.hero-full { min-height: calc(100vh - 100px - 80px); }
+header[class*='wrapper']:not(.transparent) + #hero.hero-big { min-height: calc(75vh - 100px - 80px); }
 header.transparent + #hero.hero-auto #page-title,
-header.transparent + #hero #page-title.title-top { padding-top: calc(125px + 30px); }
+header.transparent + #hero #page-title.title-top { padding-top: calc(125px + 80px); }
 header[class*='wrapper'].transparent + #hero.hero-auto #page-title,
-header[class*='wrapper'].transparent + #hero #page-title.title-top { padding-top: calc(150px + 30px); }
-.single-content.col-not-sticky { padding-top: calc(100px + 30px); }
+header[class*='wrapper'].transparent + #hero #page-title.title-top { padding-top: calc(150px + 80px); }
+.single-content.col-not-sticky { padding-top: calc(100px + 80px); }

@@ -9,24 +9,13 @@
 
 <body ng-app="316Beauty" ng-controller="HomeController" ng-init="init()">
 
-<!-- PAGE LOADER -->
-<div id="page-loader" class="pulsing">
-	<div class="loader-name">
-        <img src="files/uploads/logo-dani-dark.png" srcset="files/uploads/logo-dani-dark.png 1x, files/uploads/logo-dani-dark@2x.png 2x" alt="Loader Logo">
-        <!-- <span class="uppercase">31.6 Beauty</span> -->
-    </div>
-    <div class="loader-circle">
-    	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 253.4 253.4" style="enable-background:new 0 0 253.4 253.4;" xml:space="preserve"><circle cx="126.7" cy="126.7" r="124.2"/>
-		</svg>
-   	</div>
-</div>
-<!-- PAGE LOADER -->
+{{>loader}}
 
 
 <!-- PAGE CONTENT -->
 <div id="page-content">
 	
-	<header id="header" class="wrapper transparent text-light not-sticky">        
+	<header id="header" class="wrapper transparent text-light">        
         {{>nav}}
     </header>
     
@@ -37,14 +26,14 @@
             <div id="revolutionslider1" class="revolution-slider"  data-version="5.0">
                 <ul>
                 	
-                	<li class="text-light" data-transition="parallaxhorizontal" data-masterspeed="1200">			
+                	<li class="text-light" data-transition="fadethroughdark" data-masterspeed="1200">			
                         <!-- MAIN IMAGE -->
-                        <img src="files/uploads/fashion2.jpg"  alt=""  width="1920" height="1280">
+                        <img src="files/uploads/background5.jpg"  alt=""  width="1920" height="1280">
                      
                         <!-- LAYER NR. 1 -->
                         <div class="tp-caption dani-caption align-center"				
                             data-x="center" data-hoffset="0" 
-                            data-y="center" data-voffset="['-50','-50','-40','-35']"
+                            data-y="center" data-voffset="['-40','-50','-40','-40']"
                             data-fontsize="['80','80','70','36']"
 							data-lineheight="['96','86','84','46']"
 							data-width="['none','full','full','full']"
@@ -55,13 +44,13 @@
                             data-transform_out="o:0" 							 
                             data-start="1000"
                             data-responsive_offset="on">
-                            <strong>31.6 <em>Beauty</em></strong>
+                            <img id="dark-logo" src="files/uploads/mylogo-light@3x.png" srcset="files/uploads/mylogo-light@3x.png 1x, files/uploads/mylogo-light@6x.png 2x" alt="Logo Light">
                         </div>
                         
                         <!-- LAYER NR. 2 -->
-                        <div class="tp-caption dani-caption align-center"				
+                       <!--  <div class="tp-caption dani-caption align-center"			
                             data-x="center" data-hoffset="0" 
-                            data-y="center" data-voffset="['50','50','40','35']"
+                            data-y="center" data-voffset="['100','50','40','35']"
                             data-fontsize="['36','36','30','22']"
 							data-lineheight="['46','46','38','28']"
 							data-width="['none','full','full','280px']"
@@ -72,12 +61,12 @@
                             data-transform_out="o:0" 							 
                             data-start="1000"
                             data-responsive_offset="on">
-                            A social platform for discovering quality products.
-                        </div>
+                            Discover quality products.
+                        </div> -->
 
                         <div ng-cloak ng-show="!currentUser" class="tp-caption dani-caption align-center"                
                             data-x="center" data-hoffset="0" 
-                            data-y="center" data-voffset="['140','140','130','160']"
+                            data-y="center" data-voffset="['150','140','130','180']"
                             data-fontsize="['36','36','30','22']"
                             data-lineheight="['46','46','38','28']"
                             data-width="['none','full','full','280px']"
@@ -123,15 +112,16 @@
 	
 	<!-- PAGEBODY -->
 	<section id="page-body">
-    	<div class="spacer-big"></div>
+    	<div class="spacer-medium"></div>
                         
         <div class="wrapper align-center">
             <div ng-show="!currentUser">
+                <i class="ion ion-ios-people ion-6x"></i><br/>
                 <h2>Join for exclusive <strong><em>discounts, articles &amp; tips</em></strong> - <br/>courtesy of <strong><em>Kelsie Ann</em></strong>.</h2>
                 <div class="spacer-medium"></div>
-                <a href="/join" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-user"></i> Login/Join</a>
-                <a href="/auth/facebook" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-facebook-square"></i> Facebook</a>
-                <a href="/auth/instagram" class="sr-button button-medium style-2"><i style="color:#fff" class="fa fa-instagram"></i> Instagram</a>
+                <a href="/join" class="sr-button button-big style-2"><i style="color:#fff" class="fa fa-user"></i> Login/Join</a>&nbsp;
+                <a href="/auth/facebook" class="sr-button button-big style-2"><i style="color:#fff" class="fa fa-facebook-square"></i> Facebook</a>&nbsp;
+                <a href="/auth/instagram" class="sr-button button-big style-2"><i style="color:#fff" class="fa fa-instagram"></i> Instagram</a>
             </div>
             <div id="portfolio-grid" class="isotope-grid portfolio-container style-column-2 fitrows isotope-spaced clearfix">
                  <div class="isotope-item portfolio-item">
@@ -176,9 +166,10 @@
         
         <div class="spacer-big"></div>
 
-        <div class="fullwidth-section text-light" style="background:url(files/uploads/pattern.jpg) center center; -webkit-background-size:46px 7px; -moz-background-size:46px 7px; -o-background-size:46px 7px; background-size:46px 7px;">
+        <div class="fullwidth-section text-light" style="background:url(files/uploads/pattern2.jpg) center center; -webkit-background-size:46px 7px; -moz-background-size:46px 7px; -o-background-size:46px 7px; background-size:46px 7px;">
             <div class="spacer-medium"></div>
             <div class="wrapper align-center">
+                <i class="ion ion-bag ion-6x" style="color:#fff"></i><br/>
                 <h3>Curated, Must-Have Products</h3>
                 <h5>Use the links below for <strong><em>exclusive discounts</em></strong>.</h5>
             </div>
@@ -254,9 +245,9 @@
        
        	<div class="spacer-big"></div>
                 
-        <div class="wrapper">
-        
-        	<h2 class="align-center">Blogs</h2>
+        <div class="wrapper align-center">
+             <i class="ion ion-ios-bookmarks-outline ion-6x"></i><br/>
+        	<h2 class="align-center">Featured Lookbook Posts</h2>
             
             <div id="blog-grid" class="isotope-grid minimal-grid-blog blog-container style-column-3 fitrows">
                 <div class="isotope-item blog-item">
@@ -310,9 +301,9 @@
        
             <div class="column-section clearfix">
                 <div class="column one-fourth align-center">
-                    <i class="ion ion-ios-paper-outline ion-6x"></i>
-                    <h3>Social Blog</h3>
-                    <p>Write articles, advice and reviews to engage the 31.6 community. Share your posts via social media to spark the discussion.</p>
+                    <i class="ion ion-ios-people-outline ion-6x"></i>
+                    <h3>31.6 Community</h3>
+                    <p>Build your lookbook &amp; spark a discussion on community lookbooks. Connect Facebook &amp; Instagram to drive followers from your lookbook to your pages.</p>
                 </div>
                 <div class="column one-fourth align-center">
                     <i class="ion ion-bag ion-6x"></i>
@@ -320,14 +311,14 @@
                     <p>Browse our curated lists to find quality products. Use links from our site to automatically apply exclusive discounts.</p>
                 </div>
                 <div class="column one-fourth align-center">
-                    <i class="ion ion-person ion-6x"></i>
-                    <h3>Smart Profiles</h3>
-                    <p>Tell us what you like, and we'll find fashion, cosmetic and hair products to match your style.</p>
+                    <i class="ion ion-ios-gear-outline ion-6x"></i>
+                    <h3>Custom Style Tips</h3>
+                    <p>Tell us what you like and we'll find fashion, cosmetic and hair products to match your style.</p>
                 </div>
                 <div class="column one-fourth last-col align-center">
-                    <i class="ion ion-images ion-6x"></i>
-                    <h3>Lookbook</h3>
-                    <p>Check out Kelsie Ann's seasonal lookbooks for her unique style tips.</p>
+                    <i class="ion ion-ios-bookmarks-outline ion-6x"></i>
+                    <h3>Lookbooks</h3>
+                    <p>Post articles, tips &amp; reviews to your lookbook. Comment on lookbooks &amp; check out <a href="#">Kelsie Ann's seasonal lookbook</a> for her unique style tips.</p>
                 </div>
             </div>
        

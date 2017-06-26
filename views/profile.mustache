@@ -1,0 +1,112 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+{{>head}}
+ <title>31.6 Beauty | Profile</title>
+</head>
+
+<body ng-app="316Beauty" ng-controller="AccountController" ng-init="init()">
+
+  {{>loader}}
+
+  <div id="page-content">
+  
+    <header id="header" class="wrapper transparent text-light not-sticky">        
+        {{>nav}}
+    </header>
+
+    <section id="hero" class="hero-auto text-light parallax-section" data-parallax-image="files/uploads/background6.jpg" style="background-image: url('files/uploads/background6.jpg');">
+        <div id="page-title" class="post-title wrapper title-bottom">
+            <h1><i class="ion ion-person ion-6x" style="color:#fff"></i>&nbsp;Customize Your Profile</h1>
+            <div class="spacer-small"></div>
+            <h5 class="title-alt">Tell us a bit about your style so we can tailor our recommendations.</h5>
+        </div> <!-- END #page-title -->
+    </section>
+  
+    <!-- Page Body -->
+    <section id="page-body">
+      <div class="spacer-big"></div>
+                        
+     <div class="wrapper">
+        
+          <div class="column-section clearfix">
+              <div class="column one-third">
+                  <h3><i class="ion ion-information-circled"></i>&nbsp;<strong>Basic Info</strong></h3>
+                    <form id="contact-form" class="checkform sendemail">
+                          <div class="form-row">
+                              <label for="name">Full Name</label>
+                              <input ng-change="updateProfile()" ng-model="currentUser.local.name" type="text" name="name" id="name" class="name req" value="" />
+                          </div>
+                          <div class="form-row">
+                              <label for="name">Email</label>
+                              <input ng-change="updateProfile()" ng-model="currentUser.local.email" type="text" name="name" id="name" class="name req" value="" />
+                          </div>
+                          <div class="form-row">
+                            <a ng-show="!currentUser.instagram.token" href="/connect/facebook" class="sr-button button-medium"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a>&nbsp; <a ng-show="!currentUser.instagram.token" href="/connect/instagram" class="sr-button button-medium"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
+                          </div>
+                      </form>
+                      <form id="contact-form" class="checkform sendemail">
+                        <div class="form-row">
+                              <label for="name">Reset Password</label>
+                              <input ng-model="currentUser.local.password" type="password" class="name req" value="" />
+                          </div>
+                          <div class="form-row">
+                              <a ng-click="updateProfile()" class="sr-button button-small">Reset Password</a>
+                          </div>     
+                      </form>
+                    
+                </div>
+                <div class="column two-third last-col"> 
+                  <h3><i class="ion ion-levels"></i>&nbsp;<strong>My Style</strong></h3>                  
+                    <form id="contact-form" class="checkform sendemail" action="php/contact-send.php" method="post">
+                      <div class="form-row">
+                        <a id="fashion" ng-click="toggleTag($event, 'fashion')" class="sr-button button-big">Fashion</a>&nbsp; 
+                        <a id="cosmetics" ng-click="toggleTag($event, 'cosmetics')" class="sr-button button-big">Cosmetics</a>
+                        <a id="hair" ng-click="toggleTag($event, 'hair')" class="sr-button button-big">Hair</a>
+                      </div>
+                      <div class="form-row">
+                        <a id="trendy" ng-click="toggleTag($event, 'trendy')" class="sr-button button-small">Trendy</a>
+                        <a id="casual" ng-click="toggleTag($event, 'casual')" class="sr-button button-small">Casual</a>
+                        <a id="vibrant" ng-click="toggleTag($event, 'vibrant')" class="sr-button button-small">Vibrant</a>
+                        <a id="preppy" ng-click="toggleTag($event, 'preppy')" class="sr-button button-small">Preppy</a>
+                        <a id="sexy" ng-click="toggleTag($event, 'sexy')" class="sr-button button-small">Sexy</a>
+                        <a id="elegant" ng-click="toggleTag($event, 'elegant')" class="sr-button button-small">Elegant</a>
+                        <a id="bohemian" ng-click="toggleTag($event, 'bohemian')" class="sr-button button-small">Bohemian</a>
+                        <a id="girly" ng-click="toggleTag($event, 'girly')" class="sr-button button-small">Girly</a>
+                        <a id="cowgirl" ng-click="toggleTag($event, 'cowgirl')" class="sr-button button-small">Cowgirl</a>
+                        <a id="gnd" ng-click="toggleTag($event, 'gnd')" class="sr-button button-small">Girl Next Door</a>
+                        <a id="punk" ng-click="toggleTag($event, 'punk')" class="sr-button button-small">Punk</a>
+                        <a id="sporty" ng-click="toggleTag($event, 'sporty')" class="sr-button button-small">Sporty</a>
+                        <a id="artsy" ng-click="toggleTag($event, 'artsy')" class="sr-button button-small">Artsy</a>
+                        <a id="business" ng-click="toggleTag($event, 'business')" class="sr-button button-small">Business Women</a>
+                        <a id="tomboy" ng-click="toggleTag($event, 'tomboy')" class="sr-button button-small">Tomboy</a>
+                        <a id="gothic" ng-click="toggleTag($event, 'gothic')" class="sr-button button-small">Gothic</a>
+                        <a id="rocker" ng-click="toggleTag($event, 'rocker')" class="sr-button button-small">Rocker</a>
+                      </div>
+
+                      <div class="form-row">
+                        <a id="drugstore" ng-click="toggleTag($event, 'drugstore')" class="sr-button button-small">Drug Store</a>
+                        <a id="affordable" ng-click="toggleTag($event, 'affordable')" class="sr-button button-small">Affordable</a>
+                        <a id="highend" ng-click="toggleTag($event, 'highend')" class="sr-button button-small">High End</a>
+                        <a id="luxury" ng-click="toggleTag($event, 'luxury')" class="sr-button button-small"> Luxury</a>
+                      </div>
+                        
+                     
+                    </form>
+                    
+                </div>
+            </div> 
+          
+            <div class="spacer-big"></div>
+        </div> <!-- END .wrapper -->
+
+
+    </section>
+  
+    {{>footer}}
+	
+  </div>
+ 
+ {{>scripts}}
+</body>
+</html>

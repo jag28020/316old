@@ -46,12 +46,16 @@ module.exports = function(passport){
       res.render('join');
     });
 
-    router.get('/portfolio-masonry-col3.html', function(req, res, next) {
-      res.render('portfolio-masonry-col3');
+    router.get('/profile', function(req, res) {
+        res.render('profile')
     });
 
-    router.get('/blog-minimal-grid.html', function(req, res, next) {
-      res.render('blog-minimal-grid');
+    router.get('/products', function(req, res, next) {
+      res.render('products');
+    });
+
+    router.get('/blog', function(req, res, next) {
+      res.render('blog');
     });
 
     router.get('/blog-single-slider.html', function(req, res, next) {
@@ -82,16 +86,8 @@ module.exports = function(passport){
         res.render('blog-single-no-sidebar')
     });
 
-    router.get('/products', function(req, res) {
-        res.render('shop-fullwidth')
-    });
-
     router.get('/newpost', function(req, res) {
         res.render('newpost')
-    });
-
-    router.get('/profile', isLoggedIn, function(req, res) {
-        res.render('profile2')
     });
 
 	router.get('/currentuser', isLoggedIn, function(req, res, next){

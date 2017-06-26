@@ -9,18 +9,7 @@
 
 <body ng-app="316Beauty" ng-controller="JoinController" ng-init="init()">
 
-<!-- PAGE LOADER -->
-<div id="page-loader" class="pulsing">
-	<div class="loader-name">
-        <img src="files/uploads/logo-dani-dark.png" srcset="files/uploads/logo-dani-dark.png 1x, files/uploads/logo-dani-dark@2x.png 2x" alt="Loader Logo">
-        <!-- <span class="uppercase">31.6 Beauty</span> -->
-    </div>
-    <div class="loader-circle">
-    	<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 253.4 253.4" style="enable-background:new 0 0 253.4 253.4;" xml:space="preserve"><circle cx="126.7" cy="126.7" r="124.2"/>
-		</svg>
-   	</div>
-</div>
-<!-- PAGE LOADER -->
+{{>loader}}
 
 
 <!-- PAGE CONTENT -->
@@ -35,13 +24,19 @@
 	<!-- PAGEBODY -->
 	<section id="page-body">
     	<div class="spacer-big"></div>
-        <div class="spacer-small"></div>
                         
         <div class="wrapper align-center">
+            <i class="ion ion-ios-people ion-6x"></i><br/>
             <h2>Join for exclusive <strong><em>discounts, articles &amp; tips</em></strong> - <br/>courtesy of <strong><em>Kelsie Ann</em></strong>.</h2>
             <div class="spacer-medium"></div>
-            <div class="column one-half">
+            <div class="column one-full">
                 <form id="contact-form" class="checkform sendemail">
+                    <div class="form-row">
+                         <a href="/auth/facebook" class="sr-button button-big"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a>&nbsp; 
+                         <a href="/auth/instagram" class="sr-button button-big"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
+                    </div>
+                </form>
+                <form id="contact-form" class="checkform sendemail" style="width:60%; margin-left:auto; margin-right:auto">
                     <div class="form-row">
                         <label for="name">Email</label>
                         <input ng-model="profile.email" type="text" class="name" />
@@ -56,7 +51,7 @@
                     </div>
                 </form>
             </div>
-            <div class="column one-half last-col">
+            <!-- <div class="column one-half last-col">
                 <form id="contact-form" class="checkform sendemail">
                     <div class="form-row">
                         <label>Social Media Login</label>
@@ -64,7 +59,7 @@
                          <a href="/auth/instagram" class="sr-button button-big"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
                     </div>
                 </form>
-            </div>
+            </div> -->
 
                
 

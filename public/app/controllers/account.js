@@ -17,8 +17,6 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 			url: '/currentuser'
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
-			if (response.data.results.local.isBrand == "true")
-				window.location.href = "/brand-profile"
 			if (response.data.confirmation == 'success'){
 				$scope.currentUser = response.data.results
 				$scope.currentUser.local.password = ""
@@ -27,9 +25,15 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 					console.log("Preselect tag " + t)
 					var btn = document.getElementById(t)
 					if (btn)
-						document.getElementById(t).className += " btn-selected"
+						document.getElementById(t).className += " style-2"
 				})
 			}
+			try{
+				if (response.data.results.local.isBrand == "true")
+				window.location.href = "/brand-profile"
+			}
+			catch (err){}
+			
 		}, function error(response){
 			console.log(JSON.stringify(response.data));
 		});
@@ -40,12 +44,12 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 		console.log(tag)
 		if (event.currentTarget.className.includes("btn-selected")){
 			console.log("already selected. Removing class")
-			event.currentTarget.className = event.currentTarget.className.replace("btn-selected", "")
+			event.currentTarget.className = event.currentTarget.className.replace("style-2", "")
 			$scope.currentUser.local.tags.splice($scope.currentUser.local.tags.indexOf(tag),1)
 		}
 		else{
 			console.log("not selected. Adding class")
-			event.currentTarget.className += " btn-selected"
+			event.currentTarget.className += " style-2"
 			$scope.currentUser.local.tags.push(tag)
 		}
 		$scope.updateProfile()
@@ -60,6 +64,8 @@ accountCtr.controller('AccountController', ['$scope', '$http', function($scope, 
 			data: $scope.currentUser
 		}).then(function success(response){
 			console.log(JSON.stringify(response.data));
+			if ($scope.currentUser.local.password.length >0)
+				alert("Password reset successful.")
 			$scope.currentUser = response.data.result
 			$scope.currentUser.local.birthday = new Date(response.data.result.local.birthday)
 			$scope.currentUser.local.password = ""
