@@ -42,7 +42,7 @@
                               <input ng-change="updateProfile()" ng-model="currentUser.local.email" type="text" name="name" id="name" class="name req" value="" />
                           </div>
                           <div class="form-row">
-                            <a ng-show="!currentUser.facebook.token" href="/connect/facebook" class="sr-button button-medium"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a>&nbsp; <a ng-show="!currentUser.instagram.token" href="/connect/instagram" class="sr-button button-medium"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
+                            <a ng-show="!currentUser.facebook.token" href="/connect/facebook" class="sr-button button-medium"><i class="fa fa-facebook-square fa-lg"></i> Facebook</a><span ng-show="!currentUser.facebook.token">&nbsp;</span><a ng-show="!currentUser.instagram.token" href="/connect/instagram" class="sr-button button-medium"><i class="fa fa-instagram fa-lg"></i> Instagram</a>
                           </div>
                       </form>
                       <form id="contact-form" class="checkform sendemail">
