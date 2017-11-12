@@ -46,6 +46,11 @@ module.exports = function(passport){
       res.render('join');
     });
 
+
+    router.get('/admin', function(req, res, next) {
+      res.render('admin');
+    });
+
     router.get('/profile', function(req, res) {
         res.render('profile')
     });

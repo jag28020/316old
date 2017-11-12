@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en-US">
+<head>
+{{>head}}
+ <title>31.6 Beauty | Admin</title>
+</head>
+
+<body ng-app="316Beauty" ng-controller="Admin" ng-init="init()">
+
+  {{>loader}}
+
+  <div id="page-content">
+  
+    <header id="header" class="wrapper transparent text-light not-sticky">        
+        {{>nav}}
+    </header>
+
+    <section id="hero" class="hero-auto text-light parallax-section" data-parallax-image="files/uploads/background6.jpg" style="background-image: url('files/uploads/background6.jpg');">
+        <div id="page-title" class="post-title wrapper title-bottom">
+            <h1><i class="ion ion-gear-b ion-6x" style="color:#fff"></i>&nbsp;Admin Panel</h1>
+            <div class="spacer-small"></div>
+            <h5 class="title-alt">Administrator access to 31.6 Beauty.</h5>
+        </div> <!-- END #page-title -->
+    </section>
+  
+    <!-- Page Body -->
+    <section id="page-body">
+      <div class="spacer-big"></div>
+                        
+      <div class="wrapper">
+        <div class="column-section clearfix">
+          <div class="column one-third">
+            <h3>Profiles</h3>
+            <p>Select a profile to edit.</p>
+            <select><option>Jake</option></select>
+            <div class="spacer-small"></div>            
+            <a ng-click="updateProfile()" class="sr-button button-small">Update Profile</a>
+          </div>
+          <div class="column two-thirds">
+            <form>
+              <div class="form-row">
+                <label for="name">Full Name</label>
+                <input ng-model="currentUser.local.name" type="text" name="name" id="name" class="name req" value="" />
+              </div>
+              <div class="form-row">
+                <label for="name">Email</label>
+                <input ng-model="currentUser.local.email" type="text" name="name" id="name" class="name req" value="" />
+              </div>
+              <div class="form-row">
+                <label for="name">Password</label>
+                <input ng-model="currentUser.local.email" type="password" name="name" id="name" class="name req" value="" />
+              </div>
+            </form>
+          </div>
+        </div>
+          
+      </div> <!-- END .wrapper -->
+      <div class="spacer-big"></div>
+
+
+
+    </section>
+  
+    {{>footer}}
+	
+  </div>
+ 
+ {{>scripts}}
+</body>
+</html>

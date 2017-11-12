@@ -18,9 +18,13 @@
                 <div id="menu-inner">
                     <nav id="main-nav">
                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/products">Catalog</a></li>
-                            <li><a href="/blog">Lookbooks</a></li>
+                            <li class="menu-item-has-children"><a href="index.html">Lookbooks</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/"><strong>Featured by 31.6</strong></a></li>
+                                    <li><a href="/products"><strong>Explore the Community</strong></a></li>
+                                    <li><a href="/blog"><strong>Edit My Lookbook</strong></a></li>
+                                </ul>
+                            </li>
                             <li ng-show="!currentUser"><a href="/join">Login/Join</a></li>
                             <li ng-show="currentUser"><a href="/profile">Profile</a></li>
                             <li ng-show="currentUser"><a href="/logout">Logout</a></li>
